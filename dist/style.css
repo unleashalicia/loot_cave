@@ -1,0 +1,17 @@
+html, body { margin: 0}
+
+body * {margin: 0; box-sizing: border-box;}
+
+body {
+    height: 100vh;
+    width: 100%;
+    font-size: 0;
+    color: #B78727;
+    font-family: 'Rock Salt', cursive;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -2;
+    overflow: hidden;
+    background-color: black;
+    /*background-image: url("./images/cave.jpg");*/
+}
