@@ -1,0 +1,7 @@
+#right-bar {
+    height: 100%;
+    width: 15%;
+    background-color: purple;
+    position: absolute;
+    right: 0;
+}

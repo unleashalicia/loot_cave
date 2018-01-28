@@ -1,16 +1,12 @@
 import React from 'react';
 import '../assets/css/app.css';
 import Header from './header';
-import Game from './game';
-import LeftBar from "./left-bar";
-import RightBar from './right-bar';
+import MainContent from './main_content';
 
 const App = () => (
     <div>
         <Header/>
-        <LeftBar/>
-        <Game/>
-        <RightBar/>
+        <MainContent/>
     </div>
 );
 
