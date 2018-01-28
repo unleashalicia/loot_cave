@@ -1,34 +1,27 @@
-@font-face {
-    font-family: blocky;
-    src: url(../fonts/blocky.ttf);
-}
+
+html, body { margin: 0}
+
+body * {margin: 0; box-sizing: border-box;}
 
 body {
-    margin: 0;
+    height: 100vh;
+    width: 100%;
+    font-size: 0;
+    color: #B78727;
+    font-family: 'Rock Salt', cursive;
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*z-index: -2;*/
+    overflow: hidden;
+    /*background-image: url("./images/cave.jpg");*/
 }
 
-.app {
-    background-color: #000;
-    color: #fff;
-    font-family: blocky;
-    font-size: 25px;
-    padding: 50px;
-    text-align: center;
-}
+h1, h2, h3, h4 {  display: block;  font-weight: bold; }
+p {display: block; font-size: 18px;}
 
-.app .logo {
-    height: 200px;
-}
+h1 {font-size: 48px;}
+h2 {font-size: 32px;}
+h3 {font-size: 24px;}
+h4 {font-size: 20px;}
 
-.rotate {
-    animation: spin 10s linear infinite;
-}
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}

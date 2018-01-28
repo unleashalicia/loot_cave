@@ -1,0 +1,7 @@
+#left-bar {
+     height: 100%;
+     width: 15%;
+     background-color: gray;
+     position: absolute;
+     left: 0;
+ }
