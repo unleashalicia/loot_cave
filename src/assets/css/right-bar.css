@@ -1,7 +1,7 @@
 #right-bar {
     height: 100%;
     width: 15%;
-    background-color: purple;
     position: absolute;
+    background: linear-gradient(rgba(0,0,0, .5) 70%, transparent);
     right: 0;
 }

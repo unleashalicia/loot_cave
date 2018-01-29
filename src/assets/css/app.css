@@ -9,11 +9,11 @@ body {
     font-size: 0;
     color: #B78727;
     font-family: 'Rock Salt', cursive;
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
-    /*z-index: -2;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -2;
     overflow: hidden;
-    /*background-image: url("./images/cave.jpg");*/
+    background-image: url("../images/cave.jpg");
 }
 
 h1, h2, h3, h4 {  display: block;  font-weight: bold; }
