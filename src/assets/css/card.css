@@ -1,0 +1,116 @@
+.card-container {
+    height: 30%;
+    width: 15%;
+    position: relative;
+    opacity: 1;
+    margin: auto;
+    /*display: inline-block;*/
+    -webkit-transition: opacity 3s ease-out;
+    -moz-transition: opacity 3s ease-out;
+    -o-transition: opacity 3s ease-out;
+    transition: opacity 3s ease-out;
+}
+
+.front, .back {
+    height: 100%;
+    width: 100%;
+    border: 5px solid black;
+    border-radius: 20%;
+    position: absolute;
+    top: 2%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.back {
+    background: linear-gradient(to top left, black 45%, gray);
+}
+
+
+.front.treasure {
+    background: linear-gradient(to top left, black 45%, gray);
+}
+
+.front.dragon {
+    background-color: black;
+}
+
+.front.gold_chest img {
+    width: 90%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+}
+
+.front.diamonds img {
+    width: 80%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+}
+
+.front.chainmail img {
+    width: 80%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+}
+
+.front.sword img {
+    width: 80%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+}
+
+.front.pearls img {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.front.crown img {
+    width: 80%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+}
+
+.front.dragon_head img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20%;
+    position: absolute;
+    background: black;
+}
+
+.front.dragon_body img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20%;
+    position: absolute;
+    background: black;
+}
+
+.front.dragon_tail img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20%;
+    position: absolute;
+    background: black;
+}
+
+/*.flipped {*/
+/*display: none;*/
+/*}*/
+
+.transparent {
+    opacity: 0;
+}

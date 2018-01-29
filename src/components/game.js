@@ -7,10 +7,14 @@ import Card from './card';
 
 class Game extends Component{
 
+    handleCardClick(cardIndex){
+        if();
+    }
+
     render(){
 
         const Deck = cardImages.map((item,index)=>{
-            return <Card frontImage={item} key={index}/>
+            return <Card flip={()=>{this.handleCardClick(index).bind(this)}} frontImage={item} key={index}/>
         });
 
         return (

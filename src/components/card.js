@@ -1,11 +1,13 @@
+import '../assets/css/card.css';
+
 import React from 'react';
 import {connect} from 'react-redux';
 
 const Card = props => {
     return (
         <div className="card-container">
-            <div className="card-front" src={props.frontImage}></div>
-            <div className="card-back"></div>
+            <div className="front" src={props.frontImage}></div>
+            <div className="back"></div>
         </div>
     )
 };
