@@ -9,13 +9,13 @@ import dragonBody from '../assets/images/dragon-body.jpg';
 import dragonTail from '../assets/images/dragon-tail.jpg';
 
 export default [
-    goldChest
-    // diamonds,
-    // pearls,
-    // crown,
-    // chainmail,
-    // sword,
-    // dragonHead,
-    // dragonBody,
-    // dragonTail
+    goldChest,
+    diamonds,
+    pearls,
+    crown,
+    chainmail,
+    sword,
+    dragonHead,
+    dragonBody,
+    dragonTail
 ];

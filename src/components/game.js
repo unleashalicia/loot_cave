@@ -8,7 +8,8 @@ import Card from './card';
 class Game extends Component{
 
     handleCardClick(cardIndex){
-        if();
+        // if();
+        console.log("card clicked.  Card Index: ", cardIndex);
     }
 
     render(){
