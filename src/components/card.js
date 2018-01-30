@@ -5,8 +5,8 @@ import {connect} from 'react-redux';
 
 const Card = props => {
     return (
-        <div className="card-container">
-            <div className="front" src={props.frontImage}></div>
+        <div className="card-container ">
+            <div className=`front ${props.matchType} ${props.type}` src={props.frontImage} alt={props.altImage}></div>
             <div className="back"></div>
         </div>
     )
@@ -20,4 +20,4 @@ const Card = props => {
 //
 // export default connect(mapStateToProps, {})(Card);
 
-export default Card;
+export default connect(null, {})(Card); //not sur et how this will come together.
