@@ -13,7 +13,7 @@ import dragonTail from '../assets/images/dragon-tail.jpg';
 export default [
     {
         image: goldChest,
-        alt: "gold chest",
+        alt: "gold_chest",
         type: "treasure"
     },
     {
@@ -43,17 +43,17 @@ export default [
     },
     {
         image: dragonHead,
-        alt: "dragon head",
+        alt: "dragon_head",
         type: "dragon"
     },
     {
         image: dragonBody,
-        alt: "dragon body",
+        alt: "dragon_body",
         type: "dragon"
     },
     {
         image: dragonTail,
-        alt: "dragon tail",
+        alt: "dragon_tail",
         type: "dragon"
     }
 ];
