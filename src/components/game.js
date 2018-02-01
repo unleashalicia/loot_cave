@@ -3,12 +3,13 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
+import {doubleDeck} from "../actions/index";
+import {connect} from 'react-redux';
 
 
 class Game extends Component{
 
     handleCardClick(cardIndex){
-        // if();
         console.log("card clicked.  Card Index: ", cardIndex);
     }
 
@@ -26,4 +27,10 @@ class Game extends Component{
     }
 }
 
-export default Game;
+function mapStateToProps(state){
+    return {
+        playDeck: state.game.deck
+    }
+}
+
+export default connect(mapStateToProps, {doubleDeck})(Game);
