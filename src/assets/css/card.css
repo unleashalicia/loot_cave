@@ -4,7 +4,6 @@
     position: relative;
     opacity: 1;
     margin: auto;
-    /*display: inline-block;*/
     -webkit-transition: opacity 3s ease-out;
     -moz-transition: opacity 3s ease-out;
     -o-transition: opacity 3s ease-out;
@@ -24,6 +23,7 @@
 
 .back {
     background: linear-gradient(to top left, black 45%, gray);
+    opacity: 0.5;
 }
 
 
