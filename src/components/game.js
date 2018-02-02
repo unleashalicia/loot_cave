@@ -3,14 +3,13 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck} from "../actions/index";
+import {doubleDeck, shuffleArray} from "../actions/index";
 import {connect} from 'react-redux';
-
 
 class Game extends Component{
 
     componentDidMount(){
-        this.props.doubleDeck(cardData);
+        this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
     }
 
     handleCardClick(cardIndex){
@@ -37,4 +36,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray})(Game);
