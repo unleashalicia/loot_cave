@@ -5,8 +5,7 @@ const DEFAULT_STATE = {
     matches: 0,
     firstCardIndex: null,
     attempts: 0,
-    gameState: 'ready',
-    blockClick: false
+    gameState: 'ready'
 };
 
 export default function(state = DEFAULT_STATE, action){

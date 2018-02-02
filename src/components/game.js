@@ -7,6 +7,12 @@ import {doubleDeck, shuffleArray, setFirstIndex, flipCard} from "../actions/inde
 import {connect} from 'react-redux';
 
 class Game extends Component{
+    constructor(props){
+        super(props);
+
+        this.blockClick = false;
+    }
+
 
     componentDidMount(){
         this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
@@ -15,7 +21,6 @@ class Game extends Component{
     handleCardClick(cardIndex) {
 
         let {
-            block,
             index,
             playDeck,
             matchCount,
@@ -25,18 +30,28 @@ class Game extends Component{
             flipCard
             } = this.props;
 
-        if (block) return;
+        if (this.blockClick) return;
 
         if (index === null) {
             setFirstIndex(cardIndex);
             flipCard(playDeck, cardIndex);
             console.log("first card clicked: ", playDeck[cardIndex]);
-
-        } else if (playDeck[cardIndex].image === playDeck[index].image){
-            console.log("It's a match!");
-            flipCard(playDeck, cardIndex);
         } else {
-            console.log("It's not a match.");
+            this.blockClick = true;
+            if (playDeck[cardIndex].image === playDeck[index].image) {
+                console.log("It's a match!");
+                flipCard(playDeck, cardIndex);
+                this.blockClick = false;
+            } else {
+                console.log("It's not a match.");
+                setTimeout(()=>{
+                    flipCard(playDeck, index);
+                    flipCard(playDeck, cardIndex);
+                    this.blockClick = false;
+                }, 1000)
+            }
+
+            setFirstIndex(null);
         }
 
     }
@@ -44,7 +59,7 @@ class Game extends Component{
 
     render(){
 
-        console.log(this.props.playDeck);
+        console.log("First card index: ", this.props.index);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} key={index}/>
@@ -61,7 +76,6 @@ class Game extends Component{
 function mapStateToProps(state){
     return {
         playDeck: state.game.deck,
-        block: state.game.blockClick,
         index: state.game.firstCardIndex,
         matchCount: state.game.matches,
         attemptCount: state.game.attempts,
