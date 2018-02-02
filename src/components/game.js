@@ -9,13 +9,17 @@ import {connect} from 'react-redux';
 
 class Game extends Component{
 
+    componentDidMount(){
+        this.props.doubleDeck(cardData);
+    }
+
     handleCardClick(cardIndex){
         console.log("card clicked.  Card Index: ", cardIndex);
     }
 
     render(){
 
-        const Deck = cardData.map((item,index)=>{
+        const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index).bind(this)}} frontImage={item.image} altImage={item.alt} cardType={item.type} key={index}/>
         });
 
