@@ -14,6 +14,9 @@ class Game extends Component{
 
     handleCardClick(cardIndex){
         console.log("card clicked.  Card Index: ", cardIndex);
+        if (!this.props.block){
+            console.log("Eureka!");
+        }
     }
 
     render(){
@@ -32,7 +35,8 @@ class Game extends Component{
 
 function mapStateToProps(state){
     return {
-        playDeck: state.game.deck
+        playDeck: state.game.deck,
+        block: state.game.blockClick
     }
 }
 
