@@ -14,15 +14,30 @@ class Game extends Component{
 
     handleCardClick(cardIndex) {
 
-        let {block, index, playDeck, matchCount, attemptCount, winState} = this.props;
+        let {
+            block,
+            index,
+            playDeck,
+            matchCount,
+            attemptCount,
+            winState,
+            setFirstIndex,
+            flipCard
+            } = this.props;
 
         if (block) return;
 
         if (index === null) {
-            this.props.setFirstIndex(cardIndex);
-        }
+            setFirstIndex(cardIndex);
+            flipCard(playDeck, cardIndex);
+            console.log("first card clicked: ", playDeck[cardIndex]);
 
-        flipCard(playDeck, cardIndex);
+        } else if (playDeck[cardIndex].image === playDeck[index].image){
+            console.log("It's a match!");
+            flipCard(playDeck, cardIndex);
+        } else {
+            console.log("It's not a match.");
+        }
 
     }
 
