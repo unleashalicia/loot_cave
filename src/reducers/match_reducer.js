@@ -17,6 +17,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, deck: action.payload};
         case types.SET_FIRST_INDEX:
             return {...state, firstCardIndex: action.payload};
+        case types.FLIP_CARD:
+            return {...state, deck: action.payload};
         default:
             return state;
     }

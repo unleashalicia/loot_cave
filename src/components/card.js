@@ -9,7 +9,7 @@ const Card = props => {
             <div className={`front ${props.cardType} ${props.altImage}`}>
                 <img src={props.frontImage} alt={props.altImage} />
             </div>
-            <div onClick={props.flip} className="back"></div>
+            <div onClick={props.flip} className={`back ${props.isFlipped ? 'transparent' : ''}`}></div>
         </div>
     )
 };

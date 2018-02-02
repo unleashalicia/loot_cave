@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -14,27 +14,25 @@ class Game extends Component{
 
     handleCardClick(cardIndex) {
 
-        let {block, index, matchCount, attemptCount, winState} = this.props;
-
-        console.log("card clicked.  Card Index: ", cardIndex);
+        let {block, index, playDeck, matchCount, attemptCount, winState} = this.props;
 
         if (block) return;
 
         if (index === null) {
-            console.log('First card clicked!!!');
             this.props.setFirstIndex(cardIndex);
         }
 
-        console.log("index: ", this.props.index);
+        flipCard(playDeck, cardIndex);
+
     }
 
 
     render(){
 
-        console.log("New index? ", this.props.index);
+        console.log(this.props.playDeck);
 
         const Deck = this.props.playDeck.map((item,index)=>{
-            return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} key={index}/>
+            return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} key={index}/>
         });
 
         return (
@@ -56,4 +54,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard})(Game);

@@ -41,3 +41,14 @@ export function setFirstIndex(index){
         payload: index
     }
 }
+
+export function flipCard(deck, index){
+
+    let newDeck = deck.slice();
+    newDeck[index].flipped = !newDeck[index].flipped;
+
+    return {
+        type: types.FLIP_CARD,
+        payload: newDeck
+    }
+}
