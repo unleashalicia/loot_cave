@@ -14,46 +14,55 @@ export default [
     {
         image: goldChest,
         alt: "gold_chest",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: diamonds,
         alt: "diamonds",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: pearls,
         alt: "pearls",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: crown,
         alt: "crown",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: chainmail,
         alt: "chainmail",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: sword,
         alt: "sword",
-        type: "treasure"
+        type: "treasure",
+        flipped: false
     },
     {
         image: dragonHead,
         alt: "dragon_head",
-        type: "dragon"
+        type: "dragon",
+        flipped: false
     },
     {
         image: dragonBody,
         alt: "dragon_body",
-        type: "dragon"
+        type: "dragon",
+        flipped: false
     },
     {
         image: dragonTail,
         alt: "dragon_tail",
-        type: "dragon"
+        type: "dragon",
+        flipped: false
     }
 ];

@@ -19,7 +19,7 @@ class Game extends Component{
     render(){
 
         const Deck = this.props.playDeck.map((item,index)=>{
-            return <Card flip={()=>{this.handleCardClick(index).bind(this)}} frontImage={item.image} altImage={item.alt} cardType={item.type} key={index}/>
+            return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} key={index}/>
         });
 
         return (

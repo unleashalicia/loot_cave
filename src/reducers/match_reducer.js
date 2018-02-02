@@ -1,7 +1,12 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    deck: []
+    deck: [],
+    matches: 0,
+    firstCardIndex: null,
+    attempts: 0,
+    gameState: 'ready',
+    blockClick: false
 };
 
 export default function(state = DEFAULT_STATE, action){
