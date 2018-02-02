@@ -1,13 +1,24 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    deck: []
+    deck: [],
+    matches: 0,
+    firstCardIndex: null,
+    attempts: 0,
+    gameState: 'ready',
+    blockClick: false
 };
 
 export default function(state = DEFAULT_STATE, action){
     switch(action.type){
-        // case types.SHUFFLE_DECK:
-        //     return
+        case types.DOUBLE_DECK:
+            return {...state, deck: action.payload};
+        case types.SHUFFLE_DECK:
+            return {...state, deck: action.payload};
+        case types.SET_FIRST_INDEX:
+            return {...state, firstCardIndex: action.payload};
+        case types.FLIP_CARD:
+            return {...state, deck: action.payload};
         default:
             return state;
     }
