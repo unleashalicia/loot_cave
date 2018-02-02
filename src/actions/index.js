@@ -34,3 +34,10 @@ export function shuffleArray(array){
         payload: arr
     }
 }
+
+export function setFirstIndex(index){
+    return {
+        type: types.SET_FIRST_INDEX,
+        payload: index
+    }
+}
