@@ -44,15 +44,17 @@ class Game extends Component{
 
                 switch (playDeck[index].type){
                     case "treasure":
-                        addGold(gp, playDeck[index].wealth);
+                        console.log("GP: ", gp);
+                        console.log("wealth: ", playDeck[index].worth);
+                        addGold(gp, playDeck[index].worth);
                         console.log('treasure');
                         break;
                     case "weapon":
-                        addGold(gp, playDeck[index].wealth);
+                        addGold(gp, playDeck[index].worth);
                         console.log('weapon');
                         break;
                     case "armor":
-                        addGold(gp, playDeck[index].wealth);
+                        addGold(gp, playDeck[index].worth);
                         console.log('armor');
                         break;
                     case "dragon":

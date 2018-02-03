@@ -54,11 +54,13 @@ export function flipCard(deck, index){
 }
 
 export function addGold(currentGold, moreGold){
+    let oldGold = parseFloat(currentGold);
+    let newGold = parseFloat(moreGold);
 
-    let newGoldTotal = currentGold + moreGold;
-
+    let goldTotal = oldGold + newGold;
+    console.log(goldTotal);
     return {
         type: types.ADD_GOLD,
-        payload: newGoldTotal
+        payload: goldTotal
     }
 }
