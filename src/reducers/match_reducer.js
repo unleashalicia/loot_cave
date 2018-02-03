@@ -5,7 +5,8 @@ const DEFAULT_STATE = {
     matches: 0,
     firstCardIndex: null,
     attempts: 0,
-    gameState: 'ready'
+    gameState: 'ready',
+    gold: 0
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -18,6 +19,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, firstCardIndex: action.payload};
         case types.FLIP_CARD:
             return {...state, deck: action.payload};
+        case types.ADD_GOLD:
+            return {...state, gold: action.payload};
         default:
             return state;
     }

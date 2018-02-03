@@ -52,3 +52,13 @@ export function flipCard(deck, index){
         payload: newDeck
     }
 }
+
+export function addGold(currentGold, moreGold){
+
+    let newGoldTotal = currentGold + moreGold;
+
+    return {
+        type: types.ADD_GOLD,
+        payload: newGoldTotal
+    }
+}

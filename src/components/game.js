@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -26,8 +26,10 @@ class Game extends Component{
             matchCount,
             attemptCount,
             winState,
+            gp,
             setFirstIndex,
-            flipCard
+            flipCard,
+            addGold
             } = this.props;
 
         if (this.blockClick) return;
@@ -39,6 +41,28 @@ class Game extends Component{
             this.blockClick = true;
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
+
+                switch (playDeck[index].type){
+                    case "treasure":
+                        addGold(gp, playDeck[index].wealth);
+                        console.log('treasure');
+                        break;
+                    case "weapon":
+                        addGold(gp, playDeck[index].wealth);
+                        console.log('weapon');
+                        break;
+                    case "armor":
+                        addGold(gp, playDeck[index].wealth);
+                        console.log('armor');
+                        break;
+                    case "dragon":
+                        console.log('dragon');
+                        break;
+                    default:
+                        console.err('There was trouble with this match.');
+
+                }
+
                 console.log("It's a match!");
                 this.blockClick = false;
             } else {
@@ -78,8 +102,9 @@ function mapStateToProps(state){
         index: state.game.firstCardIndex,
         matchCount: state.game.matches,
         attemptCount: state.game.attempts,
-        winState: state.game.gameState
+        winState: state.game.gameState,
+        gp: state.game.gold
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold})(Game);
