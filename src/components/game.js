@@ -3,10 +3,16 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
+    constructor(props){
+        super(props);
+
+        this.blockClick = false;
+    }
+
 
     componentDidMount(){
         this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
@@ -14,22 +20,71 @@ class Game extends Component{
 
     handleCardClick(cardIndex) {
 
-        let {block, index, playDeck, matchCount, attemptCount, winState} = this.props;
+        let {
+            index,
+            playDeck,
+            matchCount,
+            attemptCount,
+            winState,
+            gp,
+            setFirstIndex,
+            flipCard,
+            addGold
+            } = this.props;
 
-        if (block) return;
+        if (this.blockClick) return;
 
         if (index === null) {
-            this.props.setFirstIndex(cardIndex);
-        }
+            setFirstIndex(cardIndex);
+            flipCard(playDeck, cardIndex);
+        } else {
+            this.blockClick = true;
+            flipCard(playDeck, cardIndex);
+            if (playDeck[cardIndex].image === playDeck[index].image) {
 
-        flipCard(playDeck, cardIndex);
+                switch (playDeck[index].type){
+                    case "treasure":
+                        console.log("GP: ", gp);
+                        console.log("wealth: ", playDeck[index].worth);
+                        addGold(gp, playDeck[index].worth);
+                        console.log('treasure');
+                        break;
+                    case "weapon":
+                        addGold(gp, playDeck[index].worth);
+                        console.log('weapon');
+                        break;
+                    case "armor":
+                        addGold(gp, playDeck[index].worth);
+                        console.log('armor');
+                        break;
+                    case "dragon":
+                        console.log('dragon');
+                        break;
+                    default:
+                        console.err('There was trouble with this match.');
+
+                }
+
+                console.log("It's a match!");
+                this.blockClick = false;
+            } else {
+                console.log("It's not a match.");
+                setTimeout(()=>{
+                    flipCard(playDeck, index);
+                    flipCard(playDeck, cardIndex);
+                    this.blockClick = false;
+                }, 1500)
+            }
+
+            setFirstIndex(null);
+        }
 
     }
 
 
     render(){
 
-        console.log(this.props.playDeck);
+        console.log("First card index: ", this.props.index);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} key={index}/>
@@ -46,12 +101,12 @@ class Game extends Component{
 function mapStateToProps(state){
     return {
         playDeck: state.game.deck,
-        block: state.game.blockClick,
         index: state.game.firstCardIndex,
         matchCount: state.game.matches,
         attemptCount: state.game.attempts,
-        winState: state.game.gameState
+        winState: state.game.gameState,
+        gp: state.game.gold
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold})(Game);

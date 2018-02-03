@@ -5,3 +5,129 @@
      background: linear-gradient(rgba(0,0,0, .5) 70%, transparent);
      left: 0;
  }
+
+.label, .value {
+     font-size: 2vmin;
+     height: 5vh;
+     display: inline-block;
+}
+
+.title-div {
+     margin: auto;
+}
+
+.title-div h3 {
+     padding: auto;
+     margin-bottom: 10%;
+     font-size: 2.5vmin;
+     text-shadow: 3px 3px 1.5px #0f0f0f;
+     text-decoration: underline;
+     text-decoration-color: black;
+     text-align: center;
+}
+
+.value {
+     width: 25%;
+     height: 10vh;
+     text-align: right;
+     float: right;
+}
+
+.fa-music {
+     position: absolute;
+     bottom: 2%;
+     left: 15%;
+     tranform: translate(-15%, -5%);
+     font-size: 2vw;
+     color: crimson;
+}
+
+.audio {
+     width: 25%;
+     height: 5vh;
+     margin: auto;
+     margin-left: 50%;
+     transform: translateX(-50%);
+     color: crimson;
+     background-color: whitesmoke;
+     font-size: 3vmin;
+     outline: none;
+}
+
+.player_hp, .dragon_hp, .gp, .inventory {
+     height: 10vh;
+     padding: 5%;
+     margin-left: 10%;
+     margin-bottom: 1vh;
+}
+
+.dragon_hp, .gp {
+     margin-top: 5vh;
+}
+
+.dragon-health {
+     width: 10vw;
+     height: 5%;
+     border: 2px solid white;
+     padding: 5%;
+     margin-left: 5%;
+     background: linear-gradient(to right, darkred 33%, crimson 33%, crimson 66%, indianred 66%, indianred 100%);
+}
+
+.health-container {
+     height: 7vh;
+     position: relative;
+}
+
+.inventory .value {
+     position: relative;
+     width: 100%;
+     background-color: rgba(254,245,245,.2);
+}
+
+.inventory-boxes {
+     height: 7vh;
+     width: 45%;
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center center;
+     position: absolute;
+}
+
+.inventory-boxes:last-child {
+     left: 40%;
+}
+
+.heart, .dragon-health, .inventory-boxes {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+}
+
+.heart, #inventory-boxes {
+     display: inline-block;
+}
+
+.heart img {
+     height: 5vh;
+}
+
+#bonus-heart {
+     left: 30%;
+}
+
+.loot-sack, .gp .value {
+     display: inline-block;
+     height: 7vh;
+     width: 45%;
+     font-size: 2vw;
+}
+
+.loot-sack img {
+     height: 100%;
+     display: inline-block;
+}
+
+.loot-sack p {
+     display: inline-block;
+}

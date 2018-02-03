@@ -15,36 +15,42 @@ export default [
         image: goldChest,
         alt: "gold_chest",
         type: "treasure",
+        worth: 50,
         flipped: false
     },
     {
         image: diamonds,
         alt: "diamonds",
         type: "treasure",
+        worth: 100,
         flipped: false
     },
     {
         image: pearls,
         alt: "pearls",
         type: "treasure",
+        worth: 20,
         flipped: false
     },
     {
         image: crown,
         alt: "crown",
         type: "treasure",
+        worth: 40,
         flipped: false
     },
     {
         image: chainmail,
         alt: "chainmail",
-        type: "treasure",
+        type: "armor",
+        worth: 10,
         flipped: false
     },
     {
         image: sword,
         alt: "sword",
-        type: "treasure",
+        type: "weapon",
+        worth: 10,
         flipped: false
     },
     {
