@@ -13,6 +13,7 @@ class Game extends Component{
         this.blockClick = false;
         this.sword = false;
         this.chainmail = false;
+        this.playerHP = 1;
     }
 
 
@@ -53,6 +54,9 @@ class Game extends Component{
                         break;
                     case "armor":
                         addGold(gp, playDeck[index].worth);
+                        this.armor = true;
+                        this.playerHP++;
+                        console.log("Player HP :", this.playerHP);
                         break;
                     case "dragon":
                         console.log('dragon');
