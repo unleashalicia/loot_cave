@@ -35,12 +35,11 @@ class Game extends Component{
         if (index === null) {
             setFirstIndex(cardIndex);
             flipCard(playDeck, cardIndex);
-            console.log("first card clicked: ", playDeck[cardIndex]);
         } else {
             this.blockClick = true;
+            flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
                 console.log("It's a match!");
-                flipCard(playDeck, cardIndex);
                 this.blockClick = false;
             } else {
                 console.log("It's not a match.");
@@ -48,7 +47,7 @@ class Game extends Component{
                     flipCard(playDeck, index);
                     flipCard(playDeck, cardIndex);
                     this.blockClick = false;
-                }, 1000)
+                }, 1500)
             }
 
             setFirstIndex(null);
