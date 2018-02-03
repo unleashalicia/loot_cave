@@ -11,6 +11,8 @@ class Game extends Component{
         super(props);
 
         this.blockClick = false;
+        this.sword = false;
+        this.chainmail = false;
     }
 
 
@@ -29,7 +31,7 @@ class Game extends Component{
             gp,
             setFirstIndex,
             flipCard,
-            addGold
+            addGold,
             } = this.props;
 
         if (this.blockClick) return;
@@ -44,28 +46,22 @@ class Game extends Component{
 
                 switch (playDeck[index].type){
                     case "treasure":
-                        console.log("GP: ", gp);
-                        console.log("wealth: ", playDeck[index].worth);
                         addGold(gp, playDeck[index].worth);
-                        console.log('treasure');
                         break;
                     case "weapon":
                         addGold(gp, playDeck[index].worth);
-                        console.log('weapon');
                         break;
                     case "armor":
                         addGold(gp, playDeck[index].worth);
-                        console.log('armor');
                         break;
                     case "dragon":
                         console.log('dragon');
                         break;
                     default:
-                        console.err('There was trouble with this match.');
+                        console.error('There was a rip in the fabric of space and time that swallowed you and the dragon whole.');
 
                 }
 
-                console.log("It's a match!");
                 this.blockClick = false;
             } else {
                 console.log("It's not a match.");
@@ -75,7 +71,6 @@ class Game extends Component{
                     this.blockClick = false;
                 }, 1500)
             }
-
             setFirstIndex(null);
         }
 
@@ -83,8 +78,6 @@ class Game extends Component{
 
 
     render(){
-
-        console.log("First card index: ", this.props.index);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} key={index}/>

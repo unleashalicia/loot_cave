@@ -64,3 +64,11 @@ export function addGold(currentGold, moreGold){
         payload: goldTotal
     }
 }
+
+export function findWeapon(){
+
+}
+
+export function findArmor(){
+
+}
