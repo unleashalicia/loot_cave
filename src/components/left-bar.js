@@ -9,6 +9,9 @@ import lootpouch from '../assets/images/lootpouch.png';
 class LeftBar extends Component{
 
     render(){
+
+        let {gp, sword, chainmail, hp} = this.props;
+
         return (
             <section id="left-bar" className="left-menu">
 
@@ -19,10 +22,10 @@ class LeftBar extends Component{
                 <div className="player_hp">
                     <p className="label">Player HP</p>
                     <div className="health-container">
-                        <div className="heart" id="start-heart">
+                        <div className={`heart ${hp < 1 ? 'transparent' : ''}`} id="start-heart">
                             <img src={heart} alt="heart"/>
                         </div>
-                        <div className="heart" id="bonus-heart">
+                        <div className={`heart ${hp < 2 ? 'transparent' : ''}`} id="bonus-heart">
                             <img src={heart} alt="heart"/>
                         </div>
                     </div>
@@ -31,8 +34,8 @@ class LeftBar extends Component{
                 <div className="inventory">
                     <p className="label">Inventory</p>
                     <div className="value">
-                        <div className="inventory-boxes"></div>
-                        <div className="inventory-boxes"></div>
+                        <div className={`inventory-boxes`}></div>
+                        <div className={`inventory-boxes`}></div>
                     </div>
                 </div>
 
@@ -41,7 +44,7 @@ class LeftBar extends Component{
                     <div className="loot-sack">
                         <img src={lootpouch} alt="sack of gold"/><p> : </p>
                     </div>
-                    <div className="value">{this.props.gp}</div>
+                    <div className="value">{gp}</div>
                 </div>
 
                 <div className="dragon_hp">
@@ -58,7 +61,10 @@ class LeftBar extends Component{
 
 function mapStateToProps(state){
     return{
-        gp: state.game.gold
+        gp: state.game.gold,
+        sword: state.game.weapon,
+        chainmail: state.game.armor,
+        hp: state.game.playerHP
     }
 }
 

@@ -13,7 +13,6 @@ class Game extends Component{
         this.blockClick = false;
     }
 
-
     componentDidMount(){
         this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
     }

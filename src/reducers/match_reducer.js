@@ -7,7 +7,7 @@ const DEFAULT_STATE = {
     attempts: 0,
     gameState: 'ready',
     gold: 0,
-    sword: false,
+    weapon: false,
     armor: false,
     playerHP: 1
 };
