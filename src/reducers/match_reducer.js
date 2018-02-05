@@ -6,7 +6,10 @@ const DEFAULT_STATE = {
     firstCardIndex: null,
     attempts: 0,
     gameState: 'ready',
-    gold: 0
+    gold: 0,
+    sword: false,
+    armor: false,
+    playerHP: 1
 };
 
 export default function(state = DEFAULT_STATE, action){
