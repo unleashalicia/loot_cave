@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import '../assets/css/left-bar.css';
 import heart from '../assets/images/rubyheart.png';
 import lootpouch from '../assets/images/lootpouch.png';
+import inventorySword from '../assets/images/sword.png';
+import inventoryChainmail from '../assets/images/chainmail.png';
 
 
 class LeftBar extends Component{
@@ -34,8 +36,8 @@ class LeftBar extends Component{
                 <div className="inventory">
                     <p className="label">Inventory</p>
                     <div className="value">
-                        <div className={`inventory-boxes`}></div>
-                        <div className={`inventory-boxes`}></div>
+                        <div className={`inventory-boxes sword`}></div>
+                        <div className={`inventory-boxes armor`}></div>
                     </div>
                 </div>
 

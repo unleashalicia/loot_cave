@@ -114,3 +114,11 @@
 .transparent {
      opacity: 0;
 }
+
+.sword {
+     background-image: url('../images/sword.png');
+}
+
+.armor {
+     background-image: url('../images/chainmail.png');
+}
