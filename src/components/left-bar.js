@@ -12,7 +12,8 @@ class LeftBar extends Component{
 
     render(){
 
-        let {gp, sword, chainmail, hp} = this.props;
+
+        let {gp, hp} = this.props;
 
         return (
             <section id="left-bar" className="left-menu">
@@ -36,8 +37,8 @@ class LeftBar extends Component{
                 <div className="inventory">
                     <p className="label">Inventory</p>
                     <div className="value">
-                        <div className={`inventory-boxes sword`}></div>
-                        <div className={`inventory-boxes armor`}></div>
+                        <div className={`inventory-boxes`}></div>
+                        <div className={`inventory-boxes`}></div>
                     </div>
                 </div>
 

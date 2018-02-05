@@ -67,6 +67,9 @@ export function addGold(currentGold, moreGold){
 
 export function findWeapon(){
 
+    return {
+        type: types.FIND_WEAPON
+    }
 }
 
 export function findArmor(currentHP){

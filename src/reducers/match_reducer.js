@@ -24,6 +24,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, deck: action.payload};
         case types.ADD_GOLD:
             return {...state, gold: action.payload};
+        case types.FIND_WEAPON:
+            return {...state, weapon: true};
         case types.FIND_ARMOR:
             return {...state, armor: true, playerHP: action.payload};
         default:
