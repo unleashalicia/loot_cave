@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -22,13 +22,13 @@ class Game extends Component{
         let {
             index,
             playDeck,
-            matchCount,
-            attemptCount,
+            hp,
             winState,
             gp,
             setFirstIndex,
             flipCard,
             addGold,
+            findArmor
             } = this.props;
 
         if (this.blockClick) return;
@@ -50,9 +50,7 @@ class Game extends Component{
                         break;
                     case "armor":
                         addGold(gp, playDeck[index].worth);
-                        this.armor = true;
-                        this.playerHP++;
-                        console.log("Player HP :", this.playerHP);
+                        findArmor(hp);
                         break;
                     case "dragon":
                         console.log('dragon');
@@ -95,11 +93,10 @@ function mapStateToProps(state){
     return {
         playDeck: state.game.deck,
         index: state.game.firstCardIndex,
-        matchCount: state.game.matches,
-        attemptCount: state.game.attempts,
         winState: state.game.gameState,
-        gp: state.game.gold
+        gp: state.game.gold,
+        hp: state.game.playerHP
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor})(Game);

@@ -69,6 +69,11 @@ export function findWeapon(){
 
 }
 
-export function findArmor(){
+export function findArmor(currentHP){
+    let newHP = currentHP + 1;
 
+    return {
+        type: types.FIND_ARMOR,
+        payload: newHP
+    }
 }
