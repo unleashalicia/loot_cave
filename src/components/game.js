@@ -11,9 +11,6 @@ class Game extends Component{
         super(props);
 
         this.blockClick = false;
-        this.sword = false;
-        this.chainmail = false;
-        this.playerHP = 1;
     }
 
 
