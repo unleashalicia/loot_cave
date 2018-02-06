@@ -33,27 +33,6 @@
      float: right;
 }
 
-.fa-music {
-     position: absolute;
-     bottom: 2%;
-     left: 15%;
-     tranform: translate(-15%, -5%);
-     font-size: 2vw;
-     color: crimson;
-}
-
-.audio {
-     width: 25%;
-     height: 5vh;
-     margin: auto;
-     margin-left: 50%;
-     transform: translateX(-50%);
-     color: crimson;
-     background-color: whitesmoke;
-     font-size: 3vmin;
-     outline: none;
-}
-
 .player_hp, .dragon_hp, .gp, .inventory {
      height: 10vh;
      padding: 5%;
@@ -130,4 +109,16 @@
 
 .loot-sack p {
      display: inline-block;
+}
+
+.transparent {
+     opacity: 0;
+}
+
+.sword {
+     background-image: url('../images/sword.png');
+}
+
+.chainmail {
+     background-image: url('../images/chainmail.png');
 }

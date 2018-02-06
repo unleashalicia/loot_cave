@@ -7,9 +7,10 @@ const DEFAULT_STATE = {
     attempts: 0,
     gameState: 'ready',
     gold: 0,
-    sword: false,
+    weapon: false,
     armor: false,
-    playerHP: 1
+    playerHP: 1,
+    inventory: []
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -24,6 +25,12 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, deck: action.payload};
         case types.ADD_GOLD:
             return {...state, gold: action.payload};
+        case types.FIND_WEAPON:
+            return {...state, weapon: true};
+        case types.FIND_ARMOR:
+            return {...state, armor: true, playerHP: action.payload};
+        case types.FILL_INVENTORY:
+            return {...state, inventory: action.payload};
         default:
             return state;
     }
