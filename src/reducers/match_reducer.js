@@ -11,7 +11,8 @@ const DEFAULT_STATE = {
     armor: false,
     playerHP: 1,
     dragonHP: 3,
-    inventory: []
+    inventory: [],
+    modal: true
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -36,6 +37,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, dragonHP: action.payload};
         case types.TAKE_DAMAGE:
             return {...state, playerHP: action.payload};
+        case types.TOGGLE_MODAL:
+            return {...state, modal: action.payload};
         default:
             return state;
     }

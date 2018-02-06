@@ -8,6 +8,7 @@
     -moz-transition: opacity 3s ease-out;
     -o-transition: opacity 3s ease-out;
     transition: opacity 3s ease-out;
+    cursor: pointer;
 }
 
 .front, .back {
