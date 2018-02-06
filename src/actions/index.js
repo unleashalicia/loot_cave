@@ -90,3 +90,18 @@ export function fillInventory(inventory, item){
         payload: inventory_array
     }
 }
+
+export function stabDragon(hp, weapon){
+    let newHP = hp;
+
+    if (weapon){
+        newHP = hp - 2;
+    } else {
+        newHP = hp - 1;
+    }
+
+    return {
+        type: types.STAB_DRAGON,
+        payload: newHP
+    }
+}

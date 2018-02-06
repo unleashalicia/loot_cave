@@ -50,7 +50,18 @@
      border: 2px solid white;
      padding: 5%;
      margin-left: 5%;
+}
+
+.health3 {
      background: linear-gradient(to right, darkred 33%, crimson 33%, crimson 66%, indianred 66%, indianred 100%);
+}
+
+.health2 {
+     background: linear-gradient(to right, darkred 33%, crimson 33%, crimson 66%, transparent 66%, transparent 100%);
+}
+
+.health1 {
+     background: linear-gradient(to right, darkred 33%, transparent 33%, transparent 100%);
 }
 
 .health-container {

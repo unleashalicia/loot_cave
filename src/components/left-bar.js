@@ -4,28 +4,13 @@ import {connect} from 'react-redux';
 import '../assets/css/left-bar.css';
 import heart from '../assets/images/rubyheart.png';
 import lootpouch from '../assets/images/lootpouch.png';
-import inventorySword from '../assets/images/sword.png';
-import inventoryChainmail from '../assets/images/chainmail.png';
-
 
 class LeftBar extends Component{
-    constructor(props){
-        super(props);
-
-        this.firstBoxFull = false;
-    }
-
-    fillInventory(){
-        let {sword, chainmail} = this.props;
-        if ((!this.firstBoxFull && sword) || (!this.firstBoxFull && chainmail)){
-            this.firstBoxFull = true;
-        }
-    }
 
     render(){
 
 
-        let {gp, hp, armoury} = this.props;
+        let {gp, hp, armoury, dragonHP} = this.props;
 
         return (
             <section id="left-bar" className="left-menu">
@@ -65,7 +50,7 @@ class LeftBar extends Component{
                 <div className="dragon_hp">
                     <p className="label">Dragon HP</p>
                     <div className="health-container">
-                        <div className="dragon-health"></div>
+                        <div className={`dragon-health health${dragonHP}`}></div>
                     </div>
                 </div>
 
@@ -80,7 +65,8 @@ function mapStateToProps(state){
         sword: state.game.weapon,
         chainmail: state.game.armor,
         hp: state.game.playerHP,
-        armoury: state.game.inventory
+        armoury: state.game.inventory,
+        dragonHP: state.game.dragonHP
     }
 }
 
