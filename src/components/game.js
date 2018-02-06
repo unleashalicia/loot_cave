@@ -80,6 +80,8 @@ class Game extends Component{
     }
 
 
+
+
     render(){
 
         const Deck = this.props.playDeck.map((item,index)=>{
