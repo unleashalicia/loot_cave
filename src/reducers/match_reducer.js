@@ -34,6 +34,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, inventory: action.payload};
         case types.STAB_DRAGON:
             return {...state, dragonHP: action.payload};
+        case types.TAKE_DAMAGE:
+            return {...state, playerHP: action.payload};
         default:
             return state;
     }

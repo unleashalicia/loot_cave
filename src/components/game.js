@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -33,7 +33,8 @@ class Game extends Component{
             findArmor,
             findWeapon,
             fillInventory,
-            stabDragon
+            stabDragon,
+            takeDamage
             } = this.props;
 
         if (this.blockClick) return;
@@ -60,13 +61,13 @@ class Game extends Component{
                         break;
                     case "dragon":
                         stabDragon(dragonHP, weapon);
-                        console.log('dragon');
-
                 }
 
                 this.blockClick = false;
             } else {
-                console.log("It's not a match.");
+                if (playDeck[index].type === "dragon" || playDeck[cardIndex].type === "dragon"){
+                    takeDamage(hp);
+                }
                 setTimeout(()=>{
                     flipCard(playDeck, index);
                     flipCard(playDeck, cardIndex);
@@ -105,4 +106,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage})(Game);

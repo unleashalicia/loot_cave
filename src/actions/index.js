@@ -1,5 +1,4 @@
 import types from './types';
-// import cardData from '../helpers/card_data';
 
 export function doubleDeck(arr){
 
@@ -58,7 +57,6 @@ export function addGold(currentGold, moreGold){
     let newGold = parseFloat(moreGold);
 
     let goldTotal = oldGold + newGold;
-    console.log(goldTotal);
     return {
         type: types.ADD_GOLD,
         payload: goldTotal
@@ -102,6 +100,15 @@ export function stabDragon(hp, weapon){
 
     return {
         type: types.STAB_DRAGON,
+        payload: newHP
+    }
+}
+
+export function takeDamage(hp){
+    let newHP = hp - 1;
+
+    return {
+        type: types.TAKE_DAMAGE,
         payload: newHP
     }
 }
