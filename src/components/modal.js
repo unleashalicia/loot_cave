@@ -16,8 +16,7 @@ class Modal extends Component {
         if (dragon_hp < 1) {
             this.props.toggleModal(this.props.modalState);
             this.gameMessage = messages.win;
-            this.props.addGold(this.props.gp, 1000)
-
+            this.props.addGold(this.props.gp, 1000);
         }
     }
 
@@ -25,15 +24,17 @@ class Modal extends Component {
         if (player_hp < 1){
             this.props.toggleModal(this.props.modalState);
             this.gameMessage = messages.lose;
-
         }
     }
 
     componentWillReceiveProps(nextProps){
-        const {dragonHP, playerHP} = nextProps;
 
-        this.checkForWin(dragonHP);
-        this.checkForLoss(playerHP);
+        if (this.props.dragonHP > 0 && this.props.playerHP > 0){
+            const {dragonHP, playerHP} = nextProps;
+
+            this.checkForWin(dragonHP);
+            this.checkForLoss(playerHP);
+        }
     }
 
     render() {
@@ -41,6 +42,7 @@ class Modal extends Component {
         const {modalState, toggleModal} = this.props;
 
         console.log("Modal State: ", modalState);
+        console.log("Gold: ", this.props.gp);
 
         return (
             <div onClick={toggleModal} id="outer-modal" className={`${!modalState ? 'hidden' : ''}`}>
