@@ -65,7 +65,7 @@ class Game extends Component{
 
                 this.blockClick = false;
             } else {
-                if (playDeck[index].type === "dragon" || playDeck[cardIndex].type === "dragon"){
+                if (playDeck[index].type === "dragon" && playDeck[cardIndex].type === "dragon"){
                     takeDamage(hp);
                 }
                 setTimeout(()=>{
@@ -78,6 +78,8 @@ class Game extends Component{
         }
 
     }
+
+
 
 
     render(){

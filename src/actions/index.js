@@ -112,3 +112,12 @@ export function takeDamage(hp){
         payload: newHP
     }
 }
+
+export function toggleModal(modal){
+    let modalStatus = !modal;
+
+    return {
+        type: types.TOGGLE_MODAL,
+        payload: modalStatus
+    }
+}

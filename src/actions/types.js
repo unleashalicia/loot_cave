@@ -8,5 +8,6 @@ export default {
     FIND_ARMOR: 'find_armor',
     FILL_INVENTORY: 'fill_inventory',
     STAB_DRAGON: 'stab_dragon',
-    TAKE_DAMAGE: 'take_damage'
+    TAKE_DAMAGE: 'take_damage',
+    TOGGLE_MODAL: 'toggle_modal'
 };
