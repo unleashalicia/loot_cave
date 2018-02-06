@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -23,15 +23,17 @@ class Game extends Component{
             index,
             playDeck,
             hp,
-            winState,
+            dragonHP,
             gp,
             armoury,
+            weapon,
             setFirstIndex,
             flipCard,
             addGold,
             findArmor,
             findWeapon,
-            fillInventory
+            fillInventory,
+            stabDragon
             } = this.props;
 
         if (this.blockClick) return;
@@ -44,14 +46,12 @@ class Game extends Component{
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
 
-                switch (playDeck[index].type){ //put below in cleanup
-                    case "treasure":
-                        addGold(gp, playDeck[index].worth);
-                        break;
+                switch (playDeck[index].type){
                     case "weapon":
-                        addGold(gp, playDeck[index].worth);
                         findWeapon();
                         fillInventory(armoury, "sword");
+                    case "treasure":
+                        addGold(gp, playDeck[index].worth);
                         break;
                     case "armor":
                         addGold(gp, playDeck[index].worth);
@@ -59,6 +59,7 @@ class Game extends Component{
                         fillInventory(armoury, "chainmail");
                         break;
                     case "dragon":
+                        stabDragon(dragonHP, weapon);
                         console.log('dragon');
 
                 }
@@ -96,11 +97,12 @@ function mapStateToProps(state){
     return {
         playDeck: state.game.deck,
         index: state.game.firstCardIndex,
-        winState: state.game.gameState,
         gp: state.game.gold,
         hp: state.game.playerHP,
-        armoury: state.game.inventory
+        armoury: state.game.inventory,
+        weapon: state.game.weapon,
+        dragonHP: state.game.dragonHP
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon})(Game);
