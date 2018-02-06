@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -25,10 +25,13 @@ class Game extends Component{
             hp,
             winState,
             gp,
+            armoury,
             setFirstIndex,
             flipCard,
             addGold,
-            findArmor
+            findArmor,
+            findWeapon,
+            fillInventory
             } = this.props;
 
         if (this.blockClick) return;
@@ -41,22 +44,22 @@ class Game extends Component{
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
 
-                switch (playDeck[index].type){
+                switch (playDeck[index].type){ //put below in cleanup
                     case "treasure":
                         addGold(gp, playDeck[index].worth);
                         break;
                     case "weapon":
                         addGold(gp, playDeck[index].worth);
+                        findWeapon();
+                        fillInventory(armoury, "sword");
                         break;
                     case "armor":
                         addGold(gp, playDeck[index].worth);
                         findArmor(hp);
+                        fillInventory(armoury, "chainmail");
                         break;
                     case "dragon":
                         console.log('dragon');
-                        break;
-                    default:
-                        console.error('There was a rip in the fabric of space and time that swallowed you and the dragon whole.');
 
                 }
 
@@ -95,8 +98,9 @@ function mapStateToProps(state){
         index: state.game.firstCardIndex,
         winState: state.game.gameState,
         gp: state.game.gold,
-        hp: state.game.playerHP
+        hp: state.game.playerHP,
+        armoury: state.game.inventory
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory})(Game);

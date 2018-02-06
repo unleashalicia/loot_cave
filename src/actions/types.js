@@ -5,5 +5,6 @@ export default {
     FLIP_CARD: 'flip_card',
     ADD_GOLD: 'add_gold',
     FIND_WEAPON: 'find_weapon',
-    FIND_ARMOR: 'find_armor'
+    FIND_ARMOR: 'find_armor',
+    FILL_INVENTORY: 'fill_inventory'
 };

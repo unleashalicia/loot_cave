@@ -9,7 +9,8 @@ const DEFAULT_STATE = {
     gold: 0,
     weapon: false,
     armor: false,
-    playerHP: 1
+    playerHP: 1,
+    inventory: []
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -28,6 +29,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, weapon: true};
         case types.FIND_ARMOR:
             return {...state, armor: true, playerHP: action.payload};
+        case types.FILL_INVENTORY:
+            return {...state, inventory: action.payload};
         default:
             return state;
     }

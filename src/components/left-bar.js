@@ -9,11 +9,23 @@ import inventoryChainmail from '../assets/images/chainmail.png';
 
 
 class LeftBar extends Component{
+    constructor(props){
+        super(props);
+
+        this.firstBoxFull = false;
+    }
+
+    fillInventory(){
+        let {sword, chainmail} = this.props;
+        if ((!this.firstBoxFull && sword) || (!this.firstBoxFull && chainmail)){
+            this.firstBoxFull = true;
+        }
+    }
 
     render(){
 
 
-        let {gp, hp} = this.props;
+        let {gp, hp, armoury} = this.props;
 
         return (
             <section id="left-bar" className="left-menu">
@@ -37,8 +49,8 @@ class LeftBar extends Component{
                 <div className="inventory">
                     <p className="label">Inventory</p>
                     <div className="value">
-                        <div className={`inventory-boxes`}></div>
-                        <div className={`inventory-boxes`}></div>
+                        <div className={`inventory-boxes ${armoury[0] ? armoury[0] : ''}`}></div>
+                        <div className={`inventory-boxes ${armoury[1] ? armoury[1] : ''}`}></div>
                     </div>
                 </div>
 
@@ -67,7 +79,8 @@ function mapStateToProps(state){
         gp: state.game.gold,
         sword: state.game.weapon,
         chainmail: state.game.armor,
-        hp: state.game.playerHP
+        hp: state.game.playerHP,
+        armoury: state.game.inventory
     }
 }
 

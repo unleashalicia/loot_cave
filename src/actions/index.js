@@ -80,3 +80,13 @@ export function findArmor(currentHP){
         payload: newHP
     }
 }
+
+export function fillInventory(inventory, item){
+    let inventory_array = inventory;
+    inventory_array.push(item);
+
+    return {
+        type: types.FILL_INVENTORY,
+        payload: inventory_array
+    }
+}
