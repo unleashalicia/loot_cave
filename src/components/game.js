@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -34,7 +34,8 @@ class Game extends Component{
             findWeapon,
             fillInventory,
             stabDragon,
-            takeDamage
+            takeDamage,
+            fadeMatch
             } = this.props;
 
         if (this.blockClick) return;
@@ -46,6 +47,8 @@ class Game extends Component{
             this.blockClick = true;
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
+                debugger;
+                fadeMatch(playDeck, index, cardIndex);
 
                 switch (playDeck[index].type){
                     case "weapon":
@@ -79,13 +82,12 @@ class Game extends Component{
 
     }
 
-
-
-
     render(){
 
+        console.log(this.props.playDeck);
+
         const Deck = this.props.playDeck.map((item,index)=>{
-            return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} key={index}/>
+            return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} isMatched={item.matched} key={index}/>
         });
 
         return (
@@ -108,4 +110,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch})(Game);

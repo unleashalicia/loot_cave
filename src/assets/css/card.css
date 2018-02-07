@@ -24,7 +24,7 @@
 
 .back {
     background: linear-gradient(to top left, black 45%, gray);
-    /*opacity: 0.8;*/
+    opacity: 0.8;
 }
 
 
@@ -110,4 +110,9 @@
 
 .transparent {
     opacity: 0;
+}
+
+.grayscale {
+    filter: grayscale(80%);
+    opacity: 0.8;
 }

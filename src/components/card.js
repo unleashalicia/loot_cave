@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import '../assets/css/card.css';
 
-const Card = props => {
-    return (
-        <div className="card-container">
-            <div className={`front ${props.cardType} ${props.altImage}`}>
-                <img src={props.frontImage} alt={props.altImage} />
+class Card extends Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <div className="card-container">
+                <div className={`front ${this.props.cardType} ${this.props.altImage} ${this.props.isMatched ? 'grayscale' : ''}`}>
+                    <img src={this.props.frontImage} alt={this.props.altImage} />
+                </div>
+                <div onClick={this.props.flip} className={`back ${this.props.isFlipped ? 'transparent' : ''}`}></div>
             </div>
-            <div onClick={props.flip} className={`back ${props.isFlipped ? 'transparent' : ''}`}></div>
-        </div>
-    )
+        )
+    }
 };
 
 export default Card;

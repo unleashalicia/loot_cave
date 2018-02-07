@@ -16,59 +16,68 @@ export default [
         alt: "gold_chest",
         type: "treasure",
         worth: 50,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: diamonds,
         alt: "diamonds",
         type: "treasure",
         worth: 100,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: pearls,
         alt: "pearls",
         type: "treasure",
         worth: 20,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: crown,
         alt: "crown",
         type: "treasure",
         worth: 40,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: chainmail,
         alt: "chainmail",
         type: "armor",
         worth: 10,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: sword,
         alt: "sword",
         type: "weapon",
         worth: 10,
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: dragonHead,
         alt: "dragon_head",
         type: "dragon",
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: dragonBody,
         alt: "dragon_body",
         type: "dragon",
-        flipped: false
+        flipped: false,
+        matched: false
     },
     {
         image: dragonTail,
         alt: "dragon_tail",
         type: "dragon",
-        flipped: false
+        flipped: false,
+        matched: false
     }
 ];
