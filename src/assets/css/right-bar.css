@@ -4,4 +4,98 @@
     position: absolute;
     background: linear-gradient(rgba(0,0,0, .5) 70%, transparent);
     right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.stats-container{
+    vertical-align: top;
+    width: 80%;
+    height: 100%;
+}
+
+.right-menu {
+    right: 0;
+}
+
+.stats-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.label {
+    color: whitesmoke;
+}
+
+.right-menu .label {
+    width: 91%;
+}
+
+.right-menu .value {
+    width: 5%;
+    padding: 3%;
+}
+
+.label, .value {
+    font-size: 2vmin;
+    height: 5vh;
+}
+
+
+
+.title-div {
+    margin: auto;
+}
+
+.title-div h3 {
+    padding: auto;
+    margin-bottom: 10%;
+    font-size: 2.5vmin;
+    text-shadow: 3px 3px 1.5px #0f0f0f;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-align: center;
+}
+
+.value {
+    width: 25%;
+    height: 10vh;
+    text-align: right;
+    float: right;
+}
+
+.fa-music {
+    font-size: 2vw;
+    color: crimson;
+}
+
+.audio {
+    width: 40%;
+    height: 100%;
+    color: crimson;
+    background-color: whitesmoke;
+    font-size: 3vmin;
+    outline: none;
+}
+
+.reset {
+    width: 85%;
+    height: 10vh;
+    margin: 7.5%;
+    background-image: url('../images/dragon_scales.jpeg');
+    background-size: cover;
+    color: silver;
+    text-shadow: 2px 2px 1px #0f0f0f;
+    font-size: 3vmin;
+}
+
+#music-container {
+    width: 85%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin-top: 2.5vh;
+}
+
