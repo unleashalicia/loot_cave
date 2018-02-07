@@ -39,6 +39,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, playerHP: action.payload};
         case types.TOGGLE_MODAL:
             return {...state, modal: action.payload};
+        case types.FADE_MATCH:
+            return {...state, deck: action.payload};
         default:
             return state;
     }

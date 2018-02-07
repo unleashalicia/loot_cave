@@ -9,5 +9,6 @@ export default {
     FILL_INVENTORY: 'fill_inventory',
     STAB_DRAGON: 'stab_dragon',
     TAKE_DAMAGE: 'take_damage',
-    TOGGLE_MODAL: 'toggle_modal'
+    TOGGLE_MODAL: 'toggle_modal',
+    FADE_MATCH: 'fade_match'
 };

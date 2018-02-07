@@ -121,3 +121,16 @@ export function toggleModal(modal){
         payload: modalStatus
     }
 }
+
+export function fadeMatch(deck, index1, index2){
+    let newDeck = deck.slice();
+
+    newDeck[index1].matched = !newDeck[index1].matched;
+    newDeck[index2].matched = !newDeck[index2].matched;
+
+
+    return {
+        type: types.FADE_MATCH,
+        payload: newDeck
+    }
+}
