@@ -4,19 +4,24 @@
     position: absolute;
     background: linear-gradient(rgba(0,0,0, .5) 70%, transparent);
     right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .stats-container{
     vertical-align: top;
+    width: 80%;
+    height: 100%;
 }
 
 .right-menu {
     right: 0;
 }
 
-.right-menu * {
-    display: inline-block;
-    position: relative;
+.stats-div {
+    display: flex;
+    justify-content: space-around;
 }
 
 .label {
@@ -35,8 +40,9 @@
 .label, .value {
     font-size: 2vmin;
     height: 5vh;
-    display: inline-block;
 }
+
+
 
 .title-div {
     margin: auto;
@@ -60,20 +66,13 @@
 }
 
 .fa-music {
-    position: absolute;
-    bottom: 2%;
-    left: 15%;
-    tranform: translate(-15%, -5%);
     font-size: 2vw;
     color: crimson;
 }
 
 .audio {
-    width: 25%;
-    height: 5vh;
-    margin: auto;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    width: 40%;
+    height: 100%;
     color: crimson;
     background-color: whitesmoke;
     font-size: 3vmin;
@@ -90,3 +89,13 @@
     text-shadow: 2px 2px 1px #0f0f0f;
     font-size: 3vmin;
 }
+
+#music-container {
+    width: 85%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin-top: 2.5vh;
+}
+

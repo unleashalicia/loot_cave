@@ -9,21 +9,23 @@ class RightBar extends Component{
                     <div className="title-div">
                         <h3>Memory Stats</h3>
                     </div>
-                    <div className="games-played">
-                        <p className="label">Total Games : </p>
-                        <div className="value"></div>
+                    <div className="games-played stats-div">
+                        <p className="label">Games: </p>
+                        <div className="value">0</div>
                     </div>
-                    <div className="attempts">
-                        <p className="label">Attempts : </p>
-                        <div className="value"></div>
+                    <div className="attempts stats-div">
+                        <p className="label">Attempts: </p>
+                        <div className="value">0</div>
                     </div>
-                    <div className="accuracy">
-                        <p className="label">Accuracy : </p>
-                        <div className="value"></div>
+                    <div className="accuracy stats-div">
+                        <p className="label">Accuracy: </p>
+                        <div className="value">0</div>
                     </div>
                     <button className="reset">New Game</button>
-                    <i className="fa fa-music" aria-hidden="true"></i>
-                    <button className="audio"><i className="fa fa-play"></i></button>
+                    <div id="music-container">
+                        <i className="fa fa-music" aria-hidden="true"></i>
+                        <button className="audio"><i className="fa fa-play"></i></button>
+                    </div>
                 </div>
             </section>
         )
