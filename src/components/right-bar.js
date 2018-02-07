@@ -5,7 +5,7 @@ class RightBar extends Component{
     render(){
         return (
             <div id="right-bar">
-                <p>Game Stats</p>
+                <p>TBD STUFF</p>
             </div>
         )
     }
