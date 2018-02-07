@@ -3,13 +3,12 @@
     height: 20vh;
     background-color: rgba(0,0,0, .5);
     position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #header h1 {
     color: #B78727;
     font-size: 5vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
