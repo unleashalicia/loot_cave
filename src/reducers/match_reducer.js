@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
     playerHP: 1,
     dragonHP: 3,
     inventory: [],
-    modal: true
+    modal: false
 };
 
 export default function(state = DEFAULT_STATE, action){
