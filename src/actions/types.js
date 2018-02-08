@@ -10,5 +10,7 @@ export default {
     STAB_DRAGON: 'stab_dragon',
     TAKE_DAMAGE: 'take_damage',
     TOGGLE_MODAL: 'toggle_modal',
-    FADE_MATCH: 'fade_match'
+    FADE_MATCH: 'fade_match',
+    ADD_ATTEMPT: 'add_attempt',
+    ADD_MATCH: 'add_match'
 };

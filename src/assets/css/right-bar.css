@@ -29,11 +29,11 @@
 }
 
 .right-menu .label {
-    width: 91%;
+    width: 75%;
 }
 
 .right-menu .value {
-    width: 5%;
+    width: 25%;
     padding: 3%;
 }
 

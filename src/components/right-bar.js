@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import '../assets/css/right-bar.css';
 
 class RightBar extends Component{
+
     render(){
+
+        const {attempts, matches} = this.props;
+
         return (
             <section id="right-bar" className ="right-menu">
                 <div className="stats-container">
@@ -15,11 +20,11 @@ class RightBar extends Component{
                     </div>
                     <div className="attempts stats-div">
                         <p className="label">Attempts: </p>
-                        <div className="value">0</div>
+                        <div className="value">{attempts}</div>
                     </div>
                     <div className="accuracy stats-div">
                         <p className="label">Accuracy: </p>
-                        <div className="value">0</div>
+                        <div className="value">{ attempts ? Math.round((matches/attempts) * 10000)/100 : 0}%</div>
                     </div>
                     <button className="reset">New Game</button>
                     <div id="music-container">
@@ -32,4 +37,11 @@ class RightBar extends Component{
     }
 }
 
-export default RightBar;
+function mapStateToProps(state){
+    return {
+        attempts: state.game.attempts,
+        matches: state.game.matches
+    }
+}
+
+export default connect(mapStateToProps)(RightBar);
