@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -14,6 +14,21 @@ class Game extends Component{
     }
 
     componentDidMount(){
+        this.createNewDeck();
+    }
+
+    // componentWillReceiveProps(NextProps){
+    //     console.log("Next Props: ", NextProps);
+    //     console.log("These Props: ", this.props);
+    //     const {newGame, updateGameStatus} = this.props;
+    //     debugger;
+    //     if (NextProps.newGame && !this.props.newGame){
+    //         console.log('New Game in component will receive props');
+    //         this.createNewDeck();
+    //     }
+    // }
+
+    createNewDeck(){
         this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
     }
 
@@ -111,8 +126,9 @@ function mapStateToProps(state){
         weapon: state.game.weapon,
         dragonHP: state.game.dragonHP,
         attempts: state.game.attempts,
-        matches: state.game.matches
+        matches: state.game.matches,
+        newGame: state.game.newGame
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus})(Game);

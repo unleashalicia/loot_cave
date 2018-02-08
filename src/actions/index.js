@@ -152,3 +152,22 @@ export function addMatch(matches){
         payload: newMatches
     }
 }
+
+export function updateGameTotal(games){
+    let gameTotal = games + 1;
+
+    return {
+        type: types.RESET_GAME,
+        payload: gameTotal
+    }
+}
+
+export function updateGameStatus(newGame){
+    let gameStatus = !newGame;
+    console.log("Game Status: ", gameStatus);
+
+    return {
+        type: types.NEW_GAME,
+        payload: gameStatus
+    }
+}

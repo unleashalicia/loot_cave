@@ -5,14 +5,15 @@ const DEFAULT_STATE = {
     firstCardIndex: null,
     matches: 0,
     attempts: 0,
-    gameState: 'ready',
     gold: 0,
     weapon: false,
     armor: false,
     playerHP: 1,
     dragonHP: 3,
     inventory: [],
-    modal: true
+    modal: true,
+    games: 0,
+    newGame: false
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -45,6 +46,10 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, attempts: action.payload};
         case types.ADD_MATCH:
             return {...state, matches: action.payload};
+        case types.RESET_GAME:
+            return {DEFAULT_STATE, inventory: [], games: action.payload};
+        case types.NEW_GAME:
+            return {...state, newGame: action.payload};
         default:
             return state;
     }

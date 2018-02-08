@@ -12,5 +12,7 @@ export default {
     TOGGLE_MODAL: 'toggle_modal',
     FADE_MATCH: 'fade_match',
     ADD_ATTEMPT: 'add_attempt',
-    ADD_MATCH: 'add_match'
+    ADD_MATCH: 'add_match',
+    RESET_GAME: 'reset_game',
+    NEW_GAME: 'new_game'
 };
