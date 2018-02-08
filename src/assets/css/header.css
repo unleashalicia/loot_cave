@@ -46,3 +46,8 @@ a {
     color: rgb(51, 122, 182);
     text-decoration: none;
 }
+
+a:hover {
+    color: rgb(25, 100, 228);
+    font-size: 1.2em;
+}
