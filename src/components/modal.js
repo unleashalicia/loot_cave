@@ -13,16 +13,25 @@ class Modal extends Component {
     }
 
     checkForWin(dragon_hp){
+        const {toggleModal, modalState, addGold, gp} = this.props;
+
         if (dragon_hp < 1) {
-            this.props.toggleModal(this.props.modalState);
+            setTimeout(function(){
+                toggleModal(modalState)
+            }, 1000);
+
             this.gameMessage = messages.win;
-            this.props.addGold(this.props.gp, 1000);
+            addGold(gp, 1000);
         }
     }
 
     checkForLoss(player_hp){
+        const {toggleModal, modalState} = this.props;
+
         if (player_hp < 1){
-            this.props.toggleModal(this.props.modalState);
+            setTimeout(function(){
+                toggleModal(modalState)
+            }, 1000);
             this.gameMessage = messages.lose;
         }
     }
@@ -41,12 +50,9 @@ class Modal extends Component {
 
         const {modalState, toggleModal} = this.props;
 
-        console.log("Modal State: ", modalState);
-        console.log("Gold: ", this.props.gp);
-
         return (
-            <div onClick={toggleModal} id="outer-modal" className={`${!modalState ? 'hidden' : ''}`}>
-                <div id="inner-modal">
+            <div onClick={toggleModal} id="outer-modal" className={!modalState ? 'hidden' : ''}>
+                <div id="inner-modal" className={!modalState ? 'top-hidden' : 'shown'}>
                     <div id="close">X</div>
                     <p>{this.gameMessage}</p>
                 </div>
