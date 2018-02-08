@@ -27,6 +27,10 @@
     opacity: 0.8;
 }
 
+.front {
+    transition: 5s;
+}
+
 
 .front.treasure, .front.weapon, .front.armor {
     background: linear-gradient(to top left, black 45%, gray);
