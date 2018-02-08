@@ -43,6 +43,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, deck: action.payload};
         case types.ADD_ATTEMPT:
             return {...state, attempts: action.payload};
+        case types.ADD_MATCH:
+            return {...state, matches: action.payload};
         default:
             return state;
     }

@@ -6,8 +6,7 @@ class RightBar extends Component{
 
     render(){
 
-        const {attempts} = this.props;
-        console.log("Attempts: ", attempts);
+        const {attempts, matches} = this.props;
 
         return (
             <section id="right-bar" className ="right-menu">
@@ -25,7 +24,7 @@ class RightBar extends Component{
                     </div>
                     <div className="accuracy stats-div">
                         <p className="label">Accuracy: </p>
-                        <div className="value">0</div>
+                        <div className="value">{ attempts ? Math.round((matches/attempts) * 10000)/100 : 0}%</div>
                     </div>
                     <button className="reset">New Game</button>
                     <div id="music-container">
@@ -40,7 +39,8 @@ class RightBar extends Component{
 
 function mapStateToProps(state){
     return {
-        attempts: state.game.attempts
+        attempts: state.game.attempts,
+        matches: state.game.matches
     }
 }
 

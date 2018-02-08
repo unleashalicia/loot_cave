@@ -143,3 +143,12 @@ export function addAttempt(attempts){
         payload: newAttempts
     }
 }
+
+export function addMatch(matches){
+    let newMatches = matches + 1;
+
+    return {
+        type: types.ADD_MATCH,
+        payload: newMatches
+    }
+}
