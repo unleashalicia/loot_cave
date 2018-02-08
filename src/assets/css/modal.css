@@ -5,9 +5,6 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #inner-modal {
@@ -21,8 +18,11 @@
     font-size: 2.5vmin;
     font-family: 'Permanent Marker', cursive;
     line-height: 1.5;
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
     cursor: default;
+    transition: 1s;
 }
 
 #close {
@@ -41,4 +41,12 @@
 
 .hidden {
     visibility: hidden;
+}
+
+.top-hidden {
+    top: -50%;
+}
+
+.shown {
+    top: 50%;
 }

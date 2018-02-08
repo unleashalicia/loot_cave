@@ -47,7 +47,6 @@ class Game extends Component{
             this.blockClick = true;
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
-                debugger;
                 fadeMatch(playDeck, index, cardIndex);
 
                 switch (playDeck[index].type){
@@ -83,8 +82,6 @@ class Game extends Component{
     }
 
     render(){
-
-        console.log(this.props.playDeck);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} isMatched={item.matched} key={index}/>
