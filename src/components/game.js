@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -28,6 +28,7 @@ class Game extends Component{
             armoury,
             weapon,
             setFirstIndex,
+            attempts,
             flipCard,
             addGold,
             findArmor,
@@ -35,7 +36,8 @@ class Game extends Component{
             fillInventory,
             stabDragon,
             takeDamage,
-            fadeMatch
+            fadeMatch,
+            addAttempt
             } = this.props;
 
         if (this.blockClick) return;
@@ -45,6 +47,7 @@ class Game extends Component{
             flipCard(playDeck, cardIndex);
         } else {
             this.blockClick = true;
+            addAttempt(attempts);
             flipCard(playDeck, cardIndex);
             if (playDeck[cardIndex].image === playDeck[index].image) {
                 fadeMatch(playDeck, index, cardIndex);
@@ -103,8 +106,9 @@ function mapStateToProps(state){
         hp: state.game.playerHP,
         armoury: state.game.inventory,
         weapon: state.game.weapon,
-        dragonHP: state.game.dragonHP
+        dragonHP: state.game.dragonHP,
+        attempts: state.game.attempts
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt})(Game);

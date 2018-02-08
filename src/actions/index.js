@@ -134,3 +134,12 @@ export function fadeMatch(deck, index1, index2){
         payload: newDeck
     }
 }
+
+export function addAttempt(attempts){
+    let newAttempts = attempts + 1;
+
+    return {
+        type: types.ADD_ATTEMPT,
+        payload: newAttempts
+    }
+}

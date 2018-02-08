@@ -2,8 +2,8 @@ import types from '../actions/types';
 
 const DEFAULT_STATE = {
     deck: [],
-    matches: 0,
     firstCardIndex: null,
+    matches: 0,
     attempts: 0,
     gameState: 'ready',
     gold: 0,
@@ -41,6 +41,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, modal: action.payload};
         case types.FADE_MATCH:
             return {...state, deck: action.payload};
+        case types.ADD_ATTEMPT:
+            return {...state, attempts: action.payload};
         default:
             return state;
     }
