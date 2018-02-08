@@ -3,6 +3,8 @@ import types from '../actions/types';
 const DEFAULT_STATE = {
     deck: [],
     firstCardIndex: null,
+    matches: 0,
+    attempts: 0,
     gold: 0,
     weapon: false,
     armor: false,
@@ -38,8 +40,10 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, modal: action.payload};
         case types.FADE_MATCH:
             return {...state, deck: action.payload};
-        case types.RESET:
-            return {...state, gold: 0, weapon: false, armor: false, playerHP: 1, dragonHP: 3, inventory: []};
+        case types.ADD_ATTEMPT:
+            return {...state, attempts: action.payload};
+        case types.ADD_MATCH:
+            return {...state, matches: action.payload};
         default:
             return state;
     }

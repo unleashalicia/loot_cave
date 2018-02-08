@@ -11,5 +11,7 @@ export default {
     TAKE_DAMAGE: 'take_damage',
     TOGGLE_MODAL: 'toggle_modal',
     FADE_MATCH: 'fade_match',
-    RESET: 'reset'
+    ADD_ATTEMPT: 'add_attempt',
+    ADD_MATCH: 'add_match',
+    RESET_GAME: 'reset_game'
 };

@@ -135,11 +135,29 @@ export function fadeMatch(deck, index1, index2){
     }
 }
 
-export function reset(){
+export function addAttempt(attempts){
+    let newAttempts = attempts + 1;
+
+    return {
+        type: types.ADD_ATTEMPT,
+        payload: newAttempts
+    }
+}
+
+export function addMatch(matches){
+    let newMatches = matches + 1;
+
+    return {
+        type: types.ADD_MATCH,
+        payload: newMatches
+    }
+}
+
+export function resetGame() {
 
     console.log('reset function hit');
 
     return {
-        type: types.RESET
+        type: types.RESET_GAME
     }
 }
