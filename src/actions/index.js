@@ -153,11 +153,21 @@ export function addMatch(matches){
     }
 }
 
-export function resetGame() {
-
-    console.log('reset function hit');
+export function updateGameTotal(games){
+    let gameTotal = games + 1;
 
     return {
-        type: types.RESET_GAME
+        type: types.RESET_GAME,
+        payload: gameTotal
+    }
+}
+
+export function updateGameStatus(newGame){
+    let gameStatus = !newGame;
+    console.log("Game Status: ", gameStatus);
+
+    return {
+        type: types.NEW_GAME,
+        payload: gameStatus
     }
 }

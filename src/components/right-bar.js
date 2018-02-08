@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
+import {updateGameTotal, updateGameStatus} from "../actions";
 import {connect} from 'react-redux';
 
-import {resetGame} from '../actions';
 import '../assets/css/right-bar.css';
 
 class RightBar extends Component{
+    constructor(props){
+        super(props);
+
+        this.handleResetClick = this.handleResetClick.bind(this);
+    }
 
     handleResetClick(){
-        resetGame();
+        const {games, gameStatus, updateGameTotal, updateGameStatus} = this.props;
+
+        updateGameTotal(games);
+        updateGameStatus(gameStatus);
     }
 
     render(){
@@ -46,9 +54,12 @@ class RightBar extends Component{
 function mapStateToProps(state){
     return {
         attempts: state.game.attempts,
-        matches: state.game.matches
+        matches: state.game.matches,
+        games: state.game.games,
+        gameStatus: state.game.newGame,
+        inventory: state.game.inventory
     }
 }
 
-export default connect(mapStateToProps)(RightBar);
+export default connect(mapStateToProps, {updateGameTotal, updateGameStatus})(RightBar);
 
