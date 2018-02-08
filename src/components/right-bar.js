@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {reset} from '../actions';
 import '../assets/css/right-bar.css';
 
 class RightBar extends Component{
+
+    handleResetClick(){
+        reset();
+    }
+
     render(){
+
+        console.log();
+
         return (
             <section id="right-bar" className ="right-menu">
                 <div className="stats-container">
@@ -21,7 +31,7 @@ class RightBar extends Component{
                         <p className="label">Accuracy: </p>
                         <div className="value">0</div>
                     </div>
-                    <button className="reset">New Game</button>
+                    <button onClick={this.handleResetClick} className="reset">New Game</button>
                     <div id="music-container">
                         <i className="fa fa-music" aria-hidden="true"></i>
                         <button className="audio"><i className="fa fa-play"></i></button>
@@ -32,4 +42,6 @@ class RightBar extends Component{
     }
 }
 
-export default RightBar;
+
+
+export default connect(null, {reset})(RightBar);

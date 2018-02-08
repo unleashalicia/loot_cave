@@ -17,6 +17,11 @@ class Game extends Component{
         this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
     }
 
+    // componentWillReceiveProps(NextProps){
+    //
+    //     NextProps.shuffleArray(NextProps.doubleDeck(cardData).payload);
+    // }
+
     handleCardClick(cardIndex) {
 
         let {

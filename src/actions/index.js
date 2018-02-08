@@ -134,3 +134,12 @@ export function fadeMatch(deck, index1, index2){
         payload: newDeck
     }
 }
+
+export function reset(){
+
+    console.log('reset function hit');
+
+    return {
+        type: types.RESET
+    }
+}
