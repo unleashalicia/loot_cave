@@ -17,19 +17,20 @@ class Game extends Component{
         this.createNewDeck();
     }
 
-    // componentWillReceiveProps(NextProps){
-    //     console.log("Next Props: ", NextProps);
-    //     console.log("These Props: ", this.props);
-    //     const {newGame, updateGameStatus} = this.props;
-    //     debugger;
-    //     if (NextProps.newGame && !this.props.newGame){
-    //         console.log('New Game in component will receive props');
-    //         this.createNewDeck();
-    //     }
-    // }
+    componentWillReceiveProps(NextProps){
+
+        const {newGame} = this.props;
+
+        if(NextProps.newGame){
+            this.createNewDeck();
+            this.props.updateGameStatus(newGame);
+        }
+    }
 
     createNewDeck(){
-        this.props.shuffleArray(this.props.doubleDeck(cardData).payload);
+        const {shuffleArray, doubleDeck} = this.props;
+
+        shuffleArray(doubleDeck(cardData).payload);
     }
 
     handleCardClick(cardIndex) {

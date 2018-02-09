@@ -43,18 +43,20 @@ class Modal extends Component {
 
             this.checkForWin(dragonHP);
             this.checkForLoss(playerHP);
+        } else if (this.props.dragonHP === 3 && this.props.playerHP === 1) {
+            this.gameMessage = messages.welcome;
         }
     }
 
     render() {
 
-        const {modalState, toggleModal} = this.props;
+        const {modalState, toggleModal, dragonHP, playerHP} = this.props;
 
         return (
             <div onClick={toggleModal} id="outer-modal" className={!modalState ? 'hidden' : ''}>
                 <div id="inner-modal" className={!modalState ? 'top-hidden' : 'shown'}>
                     <div id="close">X</div>
-                    <p>{this.gameMessage}</p>
+                    <p>{(dragonHP === 3 && playerHP === 1) ? messages.welcome : this.gameMessage}</p>
                 </div>
             </div>
         )

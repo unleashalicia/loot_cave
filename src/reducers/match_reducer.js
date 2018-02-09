@@ -46,9 +46,9 @@ export default function(state = DEFAULT_STATE, action){
             return {...state, attempts: action.payload};
         case types.ADD_MATCH:
             return {...state, matches: action.payload};
-        case types.RESET_GAME:
-            return {DEFAULT_STATE, inventory: [], games: action.payload};
-        case types.NEW_GAME:
+        case types.UPDATE_GAME_TOTAL:
+            return {...DEFAULT_STATE, inventory: [], games: action.payload};
+        case types.UPDATE_GAME_STATUS:
             return {...state, newGame: action.payload};
         default:
             return state;
