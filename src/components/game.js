@@ -58,7 +58,7 @@ class Game extends Component{
             addMatch
             } = this.props;
 
-        if (this.blockClick) return;
+        if (this.blockClick || playDeck[cardIndex].flipped) return;
 
         if (index === null) {
             setFirstIndex(cardIndex);
