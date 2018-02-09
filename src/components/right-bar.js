@@ -20,7 +20,7 @@ class RightBar extends Component{
 
     render(){
 
-        const {attempts, matches} = this.props;
+        const {attempts, matches, games} = this.props;
 
         return (
             <section id="right-bar" className ="right-menu">
@@ -30,7 +30,7 @@ class RightBar extends Component{
                     </div>
                     <div className="games-played stats-div">
                         <p className="label">Games: </p>
-                        <div className="value">0</div>
+                        <div className="value">{games}</div>
                     </div>
                     <div className="attempts stats-div">
                         <p className="label">Attempts: </p>
@@ -57,7 +57,7 @@ function mapStateToProps(state){
         matches: state.game.matches,
         games: state.game.games,
         gameStatus: state.game.newGame,
-        inventory: state.game.inventory
+        inventory: state.game.inventory,
     }
 }
 

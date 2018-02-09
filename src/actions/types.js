@@ -13,6 +13,6 @@ export default {
     FADE_MATCH: 'fade_match',
     ADD_ATTEMPT: 'add_attempt',
     ADD_MATCH: 'add_match',
-    RESET_GAME: 'reset_game',
-    NEW_GAME: 'new_game'
+    UPDATE_GAME_TOTAL: 'update_game_total',
+    UPDATE_GAME_STATUS: 'update_game_status'
 };

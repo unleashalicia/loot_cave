@@ -157,17 +157,16 @@ export function updateGameTotal(games){
     let gameTotal = games + 1;
 
     return {
-        type: types.RESET_GAME,
+        type: types.UPDATE_GAME_TOTAL,
         payload: gameTotal
     }
 }
 
 export function updateGameStatus(newGame){
     let gameStatus = !newGame;
-    console.log("Game Status: ", gameStatus);
 
     return {
-        type: types.NEW_GAME,
+        type: types.UPDATE_GAME_STATUS,
         payload: gameStatus
     }
 }
