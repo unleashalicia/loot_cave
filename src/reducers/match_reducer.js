@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
     playerHP: 1,
     dragonHP: 3,
     inventory: [],
-    modal: true,
+    modal: false,
     games: 0,
     newGame: false
 };

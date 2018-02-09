@@ -38,7 +38,7 @@ class RightBar extends Component{
                     </div>
                     <div className="accuracy stats-div">
                         <p className="label">Accuracy: </p>
-                        <div className="value">{ attempts ? Math.round((matches/attempts) * 10000)/100 : 0}%</div>
+                        <div className="value">{ attempts ? Math.round((matches/attempts) * 100 ) : 0}%</div>
                     </div>
                     <button onClick={this.handleResetClick} className="reset">New Game</button>
                     <div id="music-container">
