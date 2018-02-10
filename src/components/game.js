@@ -3,7 +3,7 @@ import '../assets/css/game.css';
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -14,7 +14,14 @@ class Game extends Component{
     }
 
     componentDidMount(){
+
+        const {toggleModal, modalState} = this.props;
+
         this.createNewDeck();
+        setTimeout(function(){
+            toggleModal(modalState)},
+            10200
+        );
     }
 
     componentWillReceiveProps(NextProps){
@@ -128,8 +135,9 @@ function mapStateToProps(state){
         dragonHP: state.game.dragonHP,
         attempts: state.game.attempts,
         matches: state.game.matches,
-        newGame: state.game.newGame
+        newGame: state.game.newGame,
+        modalState: state.game.modal
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal})(Game);
