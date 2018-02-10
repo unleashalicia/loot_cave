@@ -13,7 +13,8 @@ const DEFAULT_STATE = {
     inventory: [],
     modal: true,
     games: 0,
-    newGame: false
+    newGame: false,
+
 };
 
 export default function(state = DEFAULT_STATE, action){
