@@ -4,6 +4,9 @@ import {toggleModal, addGold} from "../actions";
 import messages from '../helpers/modal_messages';
 import '../assets/css/modal.css';
 import '../assets/images/graphpaper.jpg';
+import '../assets/images/dragon_scales.jpg';
+import logo from '../assets/images/dragon_logo.png';
+
 
 class Modal extends Component {
     constructor(props){
@@ -56,7 +59,12 @@ class Modal extends Component {
             <div onClick={toggleModal} id="outer-modal" className={!modalState ? 'hidden' : ''}>
                 <div id="inner-modal" className={!modalState ? 'top-hidden' : 'shown'}>
                     <div id="close">X</div>
+                    <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
                     <p>{(dragonHP === 3 && playerHP === 1) ? messages.welcome : this.gameMessage}</p>
+                    <div id="modal-button-container">
+                        <button>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
+                    </div>
+                    <img src={logo} alt="dragon logo"/>
                 </div>
             </div>
         )
