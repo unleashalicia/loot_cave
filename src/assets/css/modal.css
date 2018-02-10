@@ -9,10 +9,12 @@
 
 #inner-modal {
     width: 50%;
-    height: 50%;
+    height: 60%;
     background-image: url('../images/graphpaper.jpg');
-    padding: 2%;
     display: flex;
+    flex-flow: column;
+    padding: 2%;
+    justify-content: space-around;
     align-items: center;
     color: black;
     font-size: 2.5vmin;
@@ -23,6 +25,10 @@
     transform: translate(-50%, -50%);
     cursor: default;
     transition: 1s;
+}
+
+#inner-modal h1 {
+    font-family: 'Permanent Marker', cursive;
 }
 
 #close {
@@ -51,10 +57,46 @@
     top: 50%;
 }
 
-.intro-modal {
-    
+#inner-modal img {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 10%;
 }
 
-.message-modal {
-
+#modal-button-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+#inner-modal button {
+    background-image: url('../images/dragon_scales.jpg');
+    color: #99A3A4;
+    font-size: 2.5vmin;
+    font-family: 'Permanent Marker', cursive;
+    height: 90%;
+    width: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px #99A3A4;
+    outline: none;
+}
+
+#inner-modal button:active {
+    box-shadow: 0 0;
+    position: relative;
+    top: 4px;
+}
+
+#inner-modal button:hover {
+    font-size: 3vmin;
+}
+
+.big-font {
+    font-size: 4.5vmin;
+    text-align: center;
+}
+
+
