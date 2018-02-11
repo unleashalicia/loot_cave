@@ -16,6 +16,8 @@ class RightBar extends Component{
 
         this.handleResetClick = this.handleResetClick.bind(this);
         this.rollNum = this.rollNum.bind(this);
+        this.rollDie = this.rollDie.bind(this);
+        this.handleDieClick = this.handleDieClick.bind(this);
     }
 
     handleResetClick(){
@@ -23,6 +25,11 @@ class RightBar extends Component{
 
         updateGameTotal(games);
         updateGameStatus(gameStatus);
+    }
+
+    handleDieClick(){
+        this.rollNum();
+        this.rollDie();
     }
 
     rollDie(){
@@ -67,8 +74,8 @@ class RightBar extends Component{
                         <button className="audio"><i className="fa fa-play"></i></button>
                     </div>
                     <div id="die">
-                        <img onClick={this.rollDie} src={d20} alt="20-sided die" className={this.state.roll ? 'roll-die' : ''}/>
-                        <div onClick={this.rollNum}>{this.state.rollNum}</div>
+                        <img onClick={this.handleDieClick} src={d20} alt="20-sided die" className={this.state.roll ? 'roll-die' : ''}/>
+                        <div>{this.state.rollNum}</div>
                     </div>
                 </div>
             </section>
