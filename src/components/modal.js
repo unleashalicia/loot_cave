@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {toggleModal, addGold, updateGameTotal, updateGameStatus} from "../actions";
 import messages from '../helpers/modal_messages';
+import '../assets/css/buttons.css';
 import '../assets/css/modal.css';
 import '../assets/images/graphpaper.jpg';
 import '../assets/images/dragon_scales.jpg';

@@ -1,0 +1,40 @@
+button {
+    cursor: pointer;
+    background-image: url('../images/dragon_scales.jpeg');
+    background-size: cover;
+    color: silver;
+    text-shadow: 2px 2px 1px #0f0f0f;
+    font-family: 'Permanent Marker', cursive;
+    transition: all 0.1s;
+    box-shadow: 0 2px silver;
+    outline: none;
+}
+
+button:active, #inner-modal button:active {
+    box-shadow: 0 0;
+    position: relative;
+    top: 4px;
+}
+
+button:hover {
+    font-size: 3.2vmin;
+}
+
+#inner-modal button:hover {
+    font-size: 2.7vmin;
+}
+
+.game-button {
+    width: 85%;
+    height: 10vh;
+    margin: 7.5%;
+    font-size: 3vmin;
+    border-radius: 10%;
+}
+
+
+#inner-modal button {
+    font-size: 2.5vmin;
+    height: 90%;
+    width: 50%;
+}

@@ -22,7 +22,6 @@
 .stats-div {
     display: flex;
     justify-content: space-around;
-    height: 7%;
 }
 
 .label {
@@ -64,95 +63,9 @@
     float: right;
 }
 
-.reset {
-    width: 85%;
-    height: 10vh;
-    margin: 7.5%;
-    background-image: url('../images/dragon_scales.jpeg');
-    background-size: cover;
-    color: silver;
-    text-shadow: 2px 2px 1px #0f0f0f;
-    font-size: 3vmin;
-    border-radius: 10%;
-    box-shadow: 0 2px silver;
-    outline: none;
-    transition: all 0.1s;
-    cursor: pointer;
-}
 
-.fa-music {
-    font-size: 2vw;
-    color: crimson;
-}
 
-.audio {
-    width: 40%;
-    height: 100%;
-    color: crimson;
-    background-color: whitesmoke;
-    font-size: 3vmin;
-    outline: none;
-    cursor: pointer;
-    border-radius: 10%;
-    box-shadow: 0 2px #99A3A4;
-    transition: all 0.1s;
-}
 
-.reset:active, .audio:active {
-    box-shadow: 0 0;
-    position: relative;
-    top: 4px;
-}
 
-#music-container {
-    width: 85%;
-    height: 5vh;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin-top: 2.5vh;
-}
 
-#die {
-    display: flex;
-    width: 100%;
-    height: 30%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-#die img {
-    height: 60%;
-    filter: invert(100%);
-    cursor: pointer;
-    transition: 2s;
-}
-
-#die div {
-    position: absolute;
-    right: 30%;
-    top: 45%;
-    transform: translate(-30%, -45%);
-    height: 20%;
-    width: 20%;
-    /*background-color: red;*/
-    font-size: 2vmin;
-    color: black;
-}
-
-@keyframes Rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.roll-die {
-    animation: Rotate 2s ease-out;
-    animation-fill-mode: forwards;
-}
 
