@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleModal, addGold} from "../actions";
+import {toggleModal, addGold, updateGameTotal, updateGameStatus} from "../actions";
 import messages from '../helpers/modal_messages';
 import '../assets/css/modal.css';
 import '../assets/images/graphpaper.jpg';
@@ -13,6 +13,7 @@ class Modal extends Component {
         super(props);
 
         this.gameMessage = messages.welcome;
+        this.handleResetClick = this.handleResetClick.bind(this);
     }
 
     checkForWin(dragon_hp){
@@ -39,6 +40,15 @@ class Modal extends Component {
         }
     }
 
+    handleResetClick(){
+        const {games, gameStatus, updateGameTotal, updateGameStatus} = this.props;
+
+        if (this.gameMessage !== messages.welcome){
+            updateGameTotal(games);
+            updateGameStatus(gameStatus);
+        }
+    }
+
     componentWillReceiveProps(nextProps){
 
         if (this.props.dragonHP > 0 && this.props.playerHP > 0){
@@ -62,7 +72,7 @@ class Modal extends Component {
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
                     <p>{(dragonHP === 3 && playerHP === 1) ? messages.welcome : this.gameMessage}</p>
                     <div id="modal-button-container">
-                        <button>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
+                        <button onClick={this.handleResetClick}>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
                     </div>
                     <img src={logo} alt="dragon logo"/>
                 </div>
@@ -76,8 +86,10 @@ function mapStateToProps(state){
         modalState: state.game.modal,
         dragonHP: state.game.dragonHP,
         playerHP: state.game.playerHP,
-        gp: state.game.gold
+        gp: state.game.gold,
+        games: state.game.games,
+        gameStatus: state.game.newGame
     }
 }
 
-export default connect(mapStateToProps, {toggleModal, addGold})(Modal);
+export default connect(mapStateToProps, {toggleModal, addGold, updateGameTotal, updateGameStatus})(Modal);
