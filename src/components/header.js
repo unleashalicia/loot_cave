@@ -14,7 +14,7 @@ export default () => {
                 <h1>Loot Cave</h1>
             </div>
             <div>
-                <h3 className="making-of-link"><a href="#" target="_blank">Instructions</a></h3>
+                <h3 className="making-of-link"><a href="http://www.aliciaadamsevans.com" target="_blank">Author Page</a></h3>
             </div>
         </div>
     )
