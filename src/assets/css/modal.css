@@ -1,4 +1,4 @@
-#outer-modal {
+.outer-modal {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -7,7 +7,7 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-#inner-modal {
+.inner-modal {
     width: 50%;
     background-image: url('../images/graphpaper.jpg');
     display: flex;
@@ -25,15 +25,15 @@
     transition: 1s;
 }
 
-#inner-modal p, #inner-modal h1 {
+.inner-modal p, .inner-modal h1 {
     padding-bottom: 10%;
 }
 
-#inner-modal h1 {
+.inner-modal h1 {
     font-family: 'Permanent Marker', cursive;
 }
 
-#close {
+.close {
     position: absolute;
     top: 2%;
     right: 2%;
@@ -59,7 +59,7 @@
     top: 50%;
 }
 
-#inner-modal img {
+.inner-modal img {
     position: absolute;
     bottom: 5%;
     right: 5%;

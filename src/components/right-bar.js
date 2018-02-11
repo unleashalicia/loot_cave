@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {updateGameTotal, updateGameStatus} from "../actions";
 import {connect} from 'react-redux';
 
-import '../assets/css/right-bar.css';
 import '../assets/css/buttons.css';
+import '../assets/css/right-bar.css';
+
 
 
 class RightBar extends Component{

@@ -11,6 +11,7 @@
     cursor: pointer;
 }
 
+
 .front, .back {
     height: 100%;
     width: 100%;
@@ -24,7 +25,10 @@
 
 .back {
     background: linear-gradient(to top left, black 45%, gray);
-    opacity: 0.7;
+}
+
+.back:hover {
+    transform: scale(1.05);
 }
 
 .front {
