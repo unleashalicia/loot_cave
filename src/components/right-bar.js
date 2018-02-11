@@ -57,7 +57,7 @@ function mapStateToProps(state){
         matches: state.game.matches,
         games: state.game.games,
         gameStatus: state.game.newGame,
-        inventory: state.game.inventory,
+        inventory: state.game.inventory
     }
 }
 
