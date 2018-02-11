@@ -3,12 +3,19 @@ import {updateGameTotal, updateGameStatus} from "../actions";
 import {connect} from 'react-redux';
 
 import '../assets/css/right-bar.css';
+import d20 from '../assets/images/d20.png';
 
 class RightBar extends Component{
     constructor(props){
         super(props);
 
+        this.state = {
+            roll: false,
+            rollNum: Math.floor(Math.random()*20) + 1
+        };
+
         this.handleResetClick = this.handleResetClick.bind(this);
+        this.rollNum = this.rollNum.bind(this);
     }
 
     handleResetClick(){
@@ -16,6 +23,20 @@ class RightBar extends Component{
 
         updateGameTotal(games);
         updateGameStatus(gameStatus);
+    }
+
+    rollDie(){
+        this.setState({
+            roll: true
+        });
+    }
+
+    rollNum(){
+        let num = Math.floor(Math.random()*20) + 1;
+
+        this.setState({
+            rollNum: num
+        })
     }
 
     render(){
@@ -44,6 +65,10 @@ class RightBar extends Component{
                     <div id="music-container">
                         <i className="fa fa-music" aria-hidden="true"></i>
                         <button className="audio"><i className="fa fa-play"></i></button>
+                    </div>
+                    <div id="die">
+                        <img onClick={this.rollDie} src={d20} alt="20-sided die" className={this.state.roll ? 'roll-die' : ''}/>
+                        <div onClick={this.rollNum}>{this.state.rollNum}</div>
                     </div>
                 </div>
             </section>
