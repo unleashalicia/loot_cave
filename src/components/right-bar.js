@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {updateGameTotal, updateGameStatus} from "../actions";
+import {updateGameTotal, updateGameStatus, toggleMatchKey} from "../actions";
 import {connect} from 'react-redux';
 
 import '../assets/css/buttons.css';
@@ -12,6 +12,7 @@ class RightBar extends Component{
         super(props);
 
         this.handleResetClick = this.handleResetClick.bind(this);
+        this.handleMatchKeyClick = this.handleMatchKeyClick.bind(this);
     }
 
     handleResetClick(){
@@ -19,6 +20,12 @@ class RightBar extends Component{
 
         updateGameTotal(games);
         updateGameStatus(gameStatus);
+    }
+
+    handleMatchKeyClick(){
+        const {matchKey, toggleMatchKey} = this.props;
+
+        toggleMatchKey(matchKey);
     }
 
     render(){
@@ -43,7 +50,7 @@ class RightBar extends Component{
                         <p className="label">Accuracy: </p>
                         <div className="value">{ attempts ? Math.round((matches/attempts) * 100 ) : 0}%</div>
                     </div>
-                    <button className="game-button">Match Guide</button>
+                    <button onClick={this.handleMatchKeyClick} className="game-button">Match Guide</button>
                     <button onClick={this.handleResetClick} className="game-button">New Game</button>
                 </div>
             </section>
@@ -57,9 +64,10 @@ function mapStateToProps(state){
         matches: state.game.matches,
         games: state.game.games,
         gameStatus: state.game.newGame,
-        inventory: state.game.inventory
+        inventory: state.game.inventory,
+        matchKey: state.game.matchKey
     }
 }
 
-export default connect(mapStateToProps, {updateGameTotal, updateGameStatus})(RightBar);
+export default connect(mapStateToProps, {updateGameTotal, updateGameStatus, toggleMatchKey})(RightBar);
 

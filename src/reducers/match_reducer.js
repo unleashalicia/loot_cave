@@ -14,6 +14,7 @@ const DEFAULT_STATE = {
     modal: false,
     games: 0,
     newGame: false,
+    matchKey: false
 
 };
 
@@ -51,6 +52,8 @@ export default function(state = DEFAULT_STATE, action){
             return {...DEFAULT_STATE, inventory: [], games: action.payload};
         case types.UPDATE_GAME_STATUS:
             return {...state, newGame: action.payload};
+        case types.TOGGLE_MATCH_KEY:
+            return {...state, matchKey: action.payload};
         default:
             return state;
     }

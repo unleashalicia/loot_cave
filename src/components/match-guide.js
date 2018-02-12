@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {toggleMatchKey} from "../actions";
+
 import '../assets/css/modal.css';
 import '../assets/css/match-guide.css';
 
@@ -8,10 +11,21 @@ import armor from '../assets/images/chainmail.png';
 import weapon from '../assets/images/sword.png';
 
 class MatchGuide extends Component{
+
+    hideMatchGuide(){
+        const {matchKey, toggleMatchKey} = this.props;
+
+        toggleMatchKey(matchKey);
+    }
+
     render(){
+
+
+        const {matchKey} = this.props;
+
         return (
-            <div className="outer-modal">
-                <div id="match-guide" className="inner-modal shown">
+            <div onClick={() => {this.hideMatchGuide()}} className={`outer-modal ${!matchKey ? 'hidden' : ''}`}>
+                <div id="match-guide" className={`inner-modal ${!matchKey ? 'top-hidden' : 'shown'}`}>
                     <h1>Match Guide</h1>
                     <span className="close">X</span>
                     <div id="dragon-card-info">
@@ -51,4 +65,10 @@ class MatchGuide extends Component{
     }
 }
 
-export default MatchGuide;
+function mapStateToProps(state){
+    return {
+        matchKey: state.game.matchKey
+    }
+}
+
+export default connect(mapStateToProps, {toggleMatchKey})(MatchGuide);
