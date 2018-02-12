@@ -33,7 +33,7 @@
     font-family: 'Permanent Marker', cursive;
 }
 
-.close {
+.close  {
     position: absolute;
     top: 2%;
     right: 2%;
@@ -73,6 +73,8 @@
     justify-content: space-around;
     align-items: center;
 }
+
+
 
 
 
