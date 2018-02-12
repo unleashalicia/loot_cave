@@ -14,5 +14,6 @@ export default {
     ADD_ATTEMPT: 'add_attempt',
     ADD_MATCH: 'add_match',
     UPDATE_GAME_TOTAL: 'update_game_total',
-    UPDATE_GAME_STATUS: 'update_game_status'
+    UPDATE_GAME_STATUS: 'update_game_status',
+    TOGGLE_MATCH_KEY: 'toggle_match_key'
 };

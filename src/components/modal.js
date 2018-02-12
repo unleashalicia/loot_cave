@@ -67,9 +67,9 @@ class Modal extends Component {
         const {modalState, toggleModal, dragonHP, playerHP} = this.props;
 
         return (
-            <div onClick={toggleModal} id="outer-modal" className={!modalState ? 'hidden' : ''}>
-                <div id="inner-modal" className={!modalState ? 'top-hidden' : 'shown'}>
-                    <div id="close">X</div>
+            <div onClick={toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
+                <div className={!modalState ? 'top-hidden inner-modal' : 'shown inner-modal'}>
+                    <div className="close">X</div>
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
                     <p>{(dragonHP === 3 && playerHP === 1) ? messages.welcome : this.gameMessage}</p>
                     <div id="modal-button-container">

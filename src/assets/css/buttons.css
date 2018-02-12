@@ -10,7 +10,7 @@ button {
     outline: none;
 }
 
-button:active, #inner-modal button:active {
+button:active, .inner-modal button:active {
     box-shadow: 0 0;
     position: relative;
     top: 4px;
@@ -20,7 +20,7 @@ button:hover {
     font-size: 3.2vmin;
 }
 
-#inner-modal button:hover {
+.inner-modal button:hover {
     font-size: 2.7vmin;
 }
 
@@ -33,7 +33,7 @@ button:hover {
 }
 
 
-#inner-modal button {
+.inner-modal button {
     font-size: 2.5vmin;
     height: 90%;
     width: 50%;

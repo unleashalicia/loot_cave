@@ -170,3 +170,12 @@ export function updateGameStatus(newGame){
         payload: gameStatus
     }
 }
+
+export function toggleMatchKey(matchKey){
+    let toggledKey = !matchKey;
+
+    return {
+        type: types.TOGGLE_MATCH_KEY,
+        payload: toggledKey
+    }
+}
