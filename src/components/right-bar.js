@@ -51,7 +51,7 @@ class RightBar extends Component{
                         <div className="value">{ attempts ? Math.round((matches/attempts) * 100 ) : 0}%</div>
                     </div>
                     <button onClick={this.handleMatchKeyClick} className="game-button">Match Guide</button>
-                    <button onClick={this.handleResetClick} className="game-button">New Game</button>
+                    <button onClick={this.handleResetClick} className="game-button">New <br/>Game</button>
                 </div>
             </section>
         )
