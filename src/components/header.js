@@ -7,7 +7,9 @@ export default () => {
         <div id="header">
             <div>
                 <div>
-                    <img src={logo} alt="dragon logo"/>
+                    <div className="img-container">
+                        <img src={logo} alt="dragon logo"/>
+                    </div>
                 </div>
             </div>
             <div>
