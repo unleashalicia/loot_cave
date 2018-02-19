@@ -11,7 +11,6 @@ const App = () => (
         <MainContent/>
         <Modal/>
         <MatchGuide/>
-
     </div>
 );
 

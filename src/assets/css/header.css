@@ -12,7 +12,6 @@
 
 #header h1 {
     color: #B78727;
-    font-size: 5vh;
 }
 
 #header > div:first-child > div {
@@ -38,10 +37,13 @@
     opacity: 0.5;
 }
 
+
+
 #header > div:nth-child(2) {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 #header > div:last-child {
@@ -59,4 +61,42 @@ a {
 a:hover {
     color: rgb(25, 100, 228);
     font-size: 1.2em;
+}
+
+#orientation-message {
+    display: none;
+}
+
+.big-hide {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+    #header img {
+        height: 40%;
+    }
+
+    #orientation-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: whitesmoke;
+        border: 2px solid;
+        width: 70%;
+        text-align: center;
+    }
+
+    .big-hide {
+        display: block;
+    }
+
+    .small-hide {
+        display: none;
+    }
+
+    .img-container {
+        flex-flow: column;
+        align-content: space-between;
+        justfiy-content: center;
+    }
 }
