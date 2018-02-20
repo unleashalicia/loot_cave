@@ -26,6 +26,7 @@ h4 {font-size: 2vh;}
 
 
 @media only screen and (max-width: 500px) {
+    body { background: linear-gradient(to top left, black 45%, gray); }
     h1 {font-size: 3vh;}
     h2 {font-size: 2vh;}
     h3, p, li {font-size: 1.5vh;}

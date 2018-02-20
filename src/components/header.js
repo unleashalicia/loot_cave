@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/images/dragon_logo.png';
+import landscape from '../assets/images/orientation-icon.png';
 import '../assets/css/header.css';
 
 export default () => {
@@ -20,6 +21,7 @@ export default () => {
                 <h3 className="making-of-link small-hide"><a href="http://www.aliciaadamsevans.com" target="_blank">Author Page</a></h3>
                 <div id="orientation-message">
                     <p>For stats, switch to landscape.</p>
+                    <img src={landscape} alt="phone orientation icon"/>
                 </div>
             </div>
         </div>
