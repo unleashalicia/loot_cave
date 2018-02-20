@@ -58,20 +58,23 @@ class Modal extends Component {
             this.checkForWin(dragonHP);
             this.checkForLoss(playerHP);
         } else if (this.props.dragonHP === 3 && this.props.playerHP === 1) {
-            this.gameMessage = messages.welcome;
+            setTimeout(function(){
+                this.gameMessage = messages.welcome;
+            }, 2000);
+
         }
     }
 
     render() {
 
-        const {modalState, toggleModal, dragonHP, playerHP} = this.props;
+        const {modalState, toggleModal} = this.props;
 
         return (
             <div onClick={toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
                 <div className={!modalState ? 'top-hidden inner-modal' : 'shown inner-modal'}>
                     <div className="close">X</div>
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
-                    <p>{(dragonHP === 3 && playerHP === 1) ? messages.welcome : this.gameMessage}</p>
+                    <p>{this.gameMessage}</p>
                     <div id="modal-button-container">
                         <button onClick={this.handleResetClick}>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
                     </div>

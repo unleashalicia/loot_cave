@@ -9,7 +9,6 @@ import treasure from '../assets/images/Gold_Chest.png';
 import dragon from '../assets/images/dragon-den-background.jpg';
 import armor from '../assets/images/chainmail.png';
 import weapon from '../assets/images/sword.png';
-import logo from '../assets/images/dragon_logo.png';
 
 class MatchGuide extends Component{
 
