@@ -9,6 +9,7 @@ export default () => {
                 <div>
                     <div className="img-container">
                         <img src={logo} alt="dragon logo"/>
+                        <h3 className="making-of-link big-hide"><a href="http://www.aliciaadamsevans.com" target="_blank">Author Page</a></h3>
                     </div>
                 </div>
             </div>
@@ -16,7 +17,10 @@ export default () => {
                 <h1>Loot Cave</h1>
             </div>
             <div>
-                <h3 className="making-of-link"><a href="http://www.aliciaadamsevans.com" target="_blank">Author Page</a></h3>
+                <h3 className="making-of-link small-hide"><a href="http://www.aliciaadamsevans.com" target="_blank">Author Page</a></h3>
+                <div id="orientation-message">
+                    <p>For stats, switch to landscape.</p>
+                </div>
             </div>
         </div>
     )

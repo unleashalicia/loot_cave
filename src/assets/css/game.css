@@ -46,3 +46,36 @@
 .card-container:nth-child(16) { animation-delay: 8s }
 .card-container:nth-child(17) { animation-delay: 8.5s }
 .card-container:nth-child(18) { animation-delay: 9s }
+
+@media only screen and (max-width: 500px) {
+   #game-board {
+       overflow-y: scroll;
+       width: 90%;
+       left: 5%;
+       border: 5px solid black;
+   }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: black;
+    }
+
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px whitesmoke;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: darkred;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: crimson;
+    }
+
+}
+
