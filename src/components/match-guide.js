@@ -9,6 +9,7 @@ import treasure from '../assets/images/Gold_Chest.png';
 import dragon from '../assets/images/dragon-den-background.jpg';
 import armor from '../assets/images/chainmail.png';
 import weapon from '../assets/images/sword.png';
+import logo from '../assets/images/dragon_logo.png';
 
 class MatchGuide extends Component{
 
@@ -59,6 +60,7 @@ class MatchGuide extends Component{
                         </div>
                         <div>Matching sword cards will give you +1 damage against the dragon.</div>
                     </div>
+                    <div id="close-message">Close to Continue Your Quest</div>
                 </div>
             </div>
         )

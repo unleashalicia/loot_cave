@@ -14,6 +14,7 @@
     flex-flow: row;
     justify-content: space-between;
     border: 2px solid black;
+    font-size: 3vh;
 }
 
 .card-figure {
@@ -43,7 +44,6 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
     color: black;
-    font-size: 16px;
     padding: 0 2%;
 }
 
@@ -63,4 +63,55 @@
     transform: rotate(270deg) translateY(-50%);
     margin: 0;
     padding: 0;
+}
+
+#match-guide #close-message {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+
+    #match-guide > div {
+        width: 90%;
+    }
+
+    #match-guide div, li {
+        font-size: 2.5vh;
+    }
+
+    #dragon-card-info {
+        height: 150px;
+    }
+
+    .close {
+        top: 1%;
+        right: 1%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    #match-guide {
+        height: 50%;
+    }
+
+    #match-guide  *:not(.close):not(#close-message) {
+        display: none;
+    }
+
+    #match-guide .close {
+        font-size: 20px;
+    }
+
+    #match-guide #close-message {
+        display: block;
+        font-size: 32px;
+        color: black;
+        text-align: center;
+        border: none;
+        width: 100%;
+
+    }
+
 }
