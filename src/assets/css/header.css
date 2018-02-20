@@ -72,18 +72,28 @@ a:hover {
 }
 
 @media only screen and (max-width: 500px) {
+    #header {
+        background-color: transparent;
+    }
+
     #header img {
         height: 40%;
     }
 
     #orientation-message {
         display: flex;
-        justify-content: center;
+        flex-flow: column;
         align-items: center;
         color: whitesmoke;
         border: 2px solid;
-        width: 70%;
+        width: 100%;
+        height: 80%;
         text-align: center;
+    }
+
+    #orientation-message img {
+        filter: invert(100%);
+        height: 40px;
     }
 
     .big-hide {
@@ -94,9 +104,18 @@ a:hover {
         display: none;
     }
 
+    a, a:visited {
+        color: black;
+        font-weight: bold;
+    }
+
     .img-container {
         flex-flow: column;
         align-content: space-between;
         justfiy-content: center;
+    }
+
+    .img-container img {
+        opacity: 1;
     }
 }

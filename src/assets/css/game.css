@@ -52,7 +52,10 @@
        overflow-y: scroll;
        width: 90%;
        left: 5%;
-       border: 5px solid black;
+       border: 2px solid #B78727;
+       background-image: url('../images/cave.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
    }
 
     ::-webkit-scrollbar {
