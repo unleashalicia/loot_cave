@@ -20,7 +20,7 @@ class Game extends Component{
         this.createNewDeck();
         setTimeout(function(){
             toggleModal(modalState)},
-            10200
+            5000
         );
     }
 
