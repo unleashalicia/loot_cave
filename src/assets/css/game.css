@@ -47,11 +47,18 @@
 .card-container:nth-child(17) { animation-delay: 4.25s }
 .card-container:nth-child(18) { animation-delay: 4.5s }
 
+@media only screen and (max-device-width : 1024px) {
+    #game-board {
+        width: 90%;
+        left: 5%;
+    }
+}
+
 @media only screen and (max-width: 500px) {
    #game-board {
        overflow-y: scroll;
-       width: 90%;
-       left: 5%;
+       /*width: 90%;*/
+       /*left: 5%;*/
        border: 2px solid #B78727;
        background-image: url('../images/cave.jpg');
        background-size: cover;
@@ -63,19 +70,16 @@
         background: black;
     }
 
-
     ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px whitesmoke;
         border-radius: 10px;
     }
 
-    /* Handle */
     ::-webkit-scrollbar-thumb {
         background: darkred;
         border-radius: 10px;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: crimson;
     }
