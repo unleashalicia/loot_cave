@@ -32,6 +32,7 @@ class Game extends Component{
         if(NextProps.newGame){
             this.createNewDeck();
             this.props.updateGameStatus(newGame);
+            this.blockClick = true;
         }
 
         if (NextProps.modalState === false && modalState === true) {
