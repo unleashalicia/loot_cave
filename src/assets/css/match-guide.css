@@ -20,6 +20,7 @@
 .card-figure {
     background-color: black;
     height: 100%;
+    min-height: 100px;
     width: 25%;
     display: flex;
     justify-content: center;
@@ -73,14 +74,46 @@
     display: none;
 }
 
-@media only screen and (max-width: 700px) {
-
+@media only screen and (max-width: 1166px) {
     #match-guide > div {
         width: 90%;
     }
 
+    #match-guide > div li {
+        font-size: 12px;
+    }
+
     #dragon-card-info {
-        height: 150px;
+        height: 33%;
+    }
+
+    .card-figure {
+        width: 33%;
+    }
+}
+
+@media only screen and (max-width: 856px) {
+
+    #match-guide h1 {
+        display: none;
+    }
+
+    #match-guide > div {
+        width: 90%;
+        height: 20%;
+        font-size: 16px;
+    }
+
+    #match-guide > div li {
+        font-size: 9px;
+    }
+
+    #dragon-card-info {
+        height: 33%;
+    }
+
+    .card-figure {
+        width: 33%;
     }
 
     .close {
