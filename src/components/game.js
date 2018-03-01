@@ -10,7 +10,7 @@ class Game extends Component{
     constructor(props){
         super(props);
 
-        this.blockClick = false;
+        this.blockClick = true;
     }
 
     componentDidMount(){
@@ -18,19 +18,25 @@ class Game extends Component{
         const {toggleModal, modalState} = this.props;
 
         this.createNewDeck();
-        setTimeout(function(){
-            toggleModal(modalState)},
-            5000
+        setTimeout(
+            function(){
+            toggleModal(modalState);
+            }, 5000
         );
     }
 
     componentWillReceiveProps(NextProps){
 
-        const {newGame} = this.props;
+        const {newGame, modalState} = this.props;
 
         if(NextProps.newGame){
             this.createNewDeck();
             this.props.updateGameStatus(newGame);
+            this.blockClick = true;
+        }
+
+        if (NextProps.modalState === false && modalState === true) {
+            this.blockClick = false;
         }
     }
 
@@ -111,6 +117,7 @@ class Game extends Component{
     }
 
     render(){
+        console.log(this.blockClick);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} isMatched={item.matched} key={index}/>
