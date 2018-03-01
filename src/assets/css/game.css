@@ -24,28 +24,28 @@
 }
 
 .card-container {
-    animation: FadeIn 1s linear;
+    animation: FadeIn .5s linear;
     animation-fill-mode: both;
 }
 
-.card-container:nth-child(1) { animation-delay: .5s }
-.card-container:nth-child(2) { animation-delay: 1s }
-.card-container:nth-child(3) { animation-delay: 1.5s }
-.card-container:nth-child(4) { animation-delay: 2s }
-.card-container:nth-child(5) { animation-delay: 2.5s }
-.card-container:nth-child(6) { animation-delay: 3s }
-.card-container:nth-child(7) { animation-delay: 3.5s }
-.card-container:nth-child(8) { animation-delay: 4s }
-.card-container:nth-child(9) { animation-delay: 4.5s }
-.card-container:nth-child(10) { animation-delay: 5s }
-.card-container:nth-child(11) { animation-delay: 5.5s }
-.card-container:nth-child(12) { animation-delay: 6s }
-.card-container:nth-child(13) { animation-delay: 6.5s }
-.card-container:nth-child(14) { animation-delay: 7s }
-.card-container:nth-child(15) { animation-delay: 7.5s }
-.card-container:nth-child(16) { animation-delay: 8s }
-.card-container:nth-child(17) { animation-delay: 8.5s }
-.card-container:nth-child(18) { animation-delay: 9s }
+.card-container:nth-child(1) { animation-delay: .25s }
+.card-container:nth-child(2) { animation-delay: .5s }
+.card-container:nth-child(3) { animation-delay: .75s }
+.card-container:nth-child(4) { animation-delay: 1s }
+.card-container:nth-child(5) { animation-delay: 1.25s }
+.card-container:nth-child(6) { animation-delay: 1.5s }
+.card-container:nth-child(7) { animation-delay: 1.75s }
+.card-container:nth-child(8) { animation-delay: 2s }
+.card-container:nth-child(9) { animation-delay: 2.25s }
+.card-container:nth-child(10) { animation-delay: 2.5s }
+.card-container:nth-child(11) { animation-delay: 2.75s }
+.card-container:nth-child(12) { animation-delay: 3s }
+.card-container:nth-child(13) { animation-delay: 3.25s }
+.card-container:nth-child(14) { animation-delay: 3.5s }
+.card-container:nth-child(15) { animation-delay: 3.75s }
+.card-container:nth-child(16) { animation-delay: 4s }
+.card-container:nth-child(17) { animation-delay: 4.25s }
+.card-container:nth-child(18) { animation-delay: 4.5s }
 
 @media only screen and (max-width: 500px) {
    #game-board {
