@@ -31,6 +31,17 @@ class Modal extends Component {
         }
     }
 
+    checkForGameEnd(dragonHP, gp){
+        const {toggleModal, modalState} = this.props;
+
+        if (dragonHP < 1 && gp === 1230) {
+            setTimeout(function(){
+                toggleModal(modalState)
+            }, 1000);
+            this.gameMessage = messages.treasure;
+        }
+    }
+
     checkForLoss(player_hp){
         const {toggleModal, modalState} = this.props;
 
@@ -48,6 +59,10 @@ class Modal extends Component {
         if (this.gameMessage !== messages.welcome){
             updateGameTotal(games);
             updateGameStatus(gameStatus);
+            setTimeout(function(){
+                console.log("Welcome message should happen here.");
+                this.gameMessage = messages.welcome;
+            }, 2000);
         }
     }
 
@@ -62,9 +77,10 @@ class Modal extends Component {
         const {dragonHP, playerHP, modalState} = this.props;
 
         if (dragonHP > 0 && playerHP > 0){
-            const {dragonHP, playerHP} = nextProps;
+            const {dragonHP, playerHP, gp} = nextProps;
             this.checkForWin(dragonHP);
             this.checkForLoss(playerHP);
+            this.checkForGameEnd(dragonHP, gp);
         } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
