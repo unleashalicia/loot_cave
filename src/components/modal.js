@@ -15,6 +15,7 @@ class Modal extends Component {
 
         this.gameMessage = messages.welcome;
         this.handleResetClick = this.handleResetClick.bind(this);
+        this.handleLosingModalClick = this.handleLosingModalClick.bind(this);
     }
 
     checkForWin(dragon_hp){
@@ -50,33 +51,37 @@ class Modal extends Component {
         }
     }
 
+    handleLosingModalClick(){
+        const {toggleModal, modalState} = this.props;
+        this.handleResetClick();
+        toggleModal(modalState);
+    }
+
     componentWillReceiveProps(nextProps){
 
-        const {dragonHP, playerHP, modalState, updateGameStatus, gameStatus} = this.props;
+        const {dragonHP, playerHP, modalState} = this.props;
 
         if (dragonHP > 0 && playerHP > 0){
             const {dragonHP, playerHP} = nextProps;
-
             this.checkForWin(dragonHP);
             this.checkForLoss(playerHP);
         } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
             }, 2000);
-
         }
 
         if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
-            updateGameStatus(gameStatus);
+            this.handleResetClick();
+            this.gameMessage = messages.welcome;
         }
     }
 
     render() {
-
         const {modalState, toggleModal, gp} = this.props;
 
         return (
-            <div onClick={toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
+            <div onClick={this.gameMessage === messages.lose ? this.handleLosingModalClick : toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
                 <div className={!modalState ? 'top-hidden inner-modal' : 'shown inner-modal'}>
                     <div className="close">X</div>
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
