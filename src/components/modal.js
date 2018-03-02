@@ -52,22 +52,28 @@ class Modal extends Component {
 
     componentWillReceiveProps(nextProps){
 
-        if (this.props.dragonHP > 0 && this.props.playerHP > 0){
+        const {dragonHP, playerHP, modalState, updateGameStatus, gameStatus} = this.props;
+
+        if (dragonHP > 0 && playerHP > 0){
             const {dragonHP, playerHP} = nextProps;
 
             this.checkForWin(dragonHP);
             this.checkForLoss(playerHP);
-        } else if (this.props.dragonHP === 3 && this.props.playerHP === 1) {
+        } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
             }, 2000);
 
         }
+
+        if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
+            updateGameStatus(gameStatus);
+        }
     }
 
     render() {
 
-        const {modalState, toggleModal} = this.props;
+        const {modalState, toggleModal, gp} = this.props;
 
         return (
             <div onClick={toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
@@ -76,9 +82,10 @@ class Modal extends Component {
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
                     <p>{this.gameMessage}</p>
                     <div id="modal-button-container">
+                        <button className={this.gameMessage === messages.win && gp < 1230 ? "" : "hidden"}>Find More Treasure!</button>
                         <button onClick={this.handleResetClick}>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
                     </div>
-                    <img src={logo} alt="dragon logo"/>
+                    <img className={this.gameMessage === messages.win && gp < 1230 ? "hidden" : ""} src={logo} alt="dragon logo"/>
                 </div>
             </div>
         )

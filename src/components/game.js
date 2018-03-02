@@ -117,7 +117,6 @@ class Game extends Component{
     }
 
     render(){
-        console.log(this.blockClick);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} isMatched={item.matched} key={index}/>
