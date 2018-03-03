@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleModal, addGold, updateGameTotal, updateGameStatus} from "../actions";
+import {toggleModal, addGold, updateGameTotal, updateGameStatus, updateMessage} from "../actions";
 import messages from '../helpers/modal_messages';
 import '../assets/css/buttons.css';
 import '../assets/css/modal.css';
@@ -19,7 +19,7 @@ class Modal extends Component {
     }
 
     checkForWin(dragon_hp){
-        const {toggleModal, modalState, addGold, gp} = this.props;
+        const {toggleModal, modalState, addGold, gp, updateMessage} = this.props;
 
         if (dragon_hp < 1) {
             setTimeout(function(){
@@ -28,33 +28,36 @@ class Modal extends Component {
 
             this.gameMessage = messages.win;
             addGold(gp, 1000);
+            updateMessage(this.gameMessage);
         }
     }
 
     checkForGameEnd(dragonHP, gp){
-        const {toggleModal, modalState} = this.props;
+        const {toggleModal, modalState, updateMessage} = this.props;
 
         if (dragonHP < 1 && gp === 1230) {
             setTimeout(function(){
                 toggleModal(modalState)
             }, 1000);
             this.gameMessage = messages.treasure;
+            updateMessage(this.gameMessage);
         }
     }
 
     checkForLoss(player_hp){
-        const {toggleModal, modalState} = this.props;
+        const {toggleModal, modalState, updateMessage} = this.props;
 
         if (player_hp < 1){
             setTimeout(function(){
                 toggleModal(modalState)
             }, 1000);
             this.gameMessage = messages.lose;
+            updateMessage(this.gameMessage);
         }
     }
 
     handleResetClick(){
-        const {games, gameStatus, updateGameTotal, updateGameStatus} = this.props;
+        const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
 
         if (this.gameMessage !== messages.welcome){
             updateGameTotal(games);
@@ -62,6 +65,7 @@ class Modal extends Component {
             setTimeout(function(){
                 console.log("Welcome message should happen here.");
                 this.gameMessage = messages.welcome;
+                updateMessage(this.gameMessage);
             }, 2000);
         }
     }
@@ -74,7 +78,7 @@ class Modal extends Component {
 
     componentWillReceiveProps(nextProps){
 
-        const {dragonHP, playerHP, modalState} = this.props;
+        const {dragonHP, playerHP, modalState, updateMessage} = this.props;
 
         if (dragonHP > 0 && playerHP > 0){
             const {dragonHP, playerHP, gp} = nextProps;
@@ -84,12 +88,14 @@ class Modal extends Component {
         } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
+                updateMessage(this.gameMessage);
             }, 2000);
         }
 
         if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
             this.handleResetClick();
             this.gameMessage = messages.welcome;
+            updateMessage(this.gameMessage);
         }
     }
 
@@ -124,4 +130,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {toggleModal, addGold, updateGameTotal, updateGameStatus})(Modal);
+export default connect(mapStateToProps, {toggleModal, addGold, updateGameTotal, updateGameStatus, updateMessage})(Modal);
