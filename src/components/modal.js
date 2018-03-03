@@ -21,6 +21,10 @@ class Modal extends Component {
     checkForWin(dragon_hp){
         const {toggleModal, modalState, addGold, gp, updateMessage} = this.props;
 
+        if (this.gameMessage === messages.win && gp < 1230) {
+            return;
+        }
+
         if (dragon_hp < 1) {
             setTimeout(function(){
                 toggleModal(modalState)
@@ -33,6 +37,7 @@ class Modal extends Component {
     }
 
     checkForGameEnd(dragonHP, gp){
+        console.log("made it to function");
         const {toggleModal, modalState, updateMessage} = this.props;
 
         if (dragonHP < 1 && gp === 1230) {
@@ -60,11 +65,11 @@ class Modal extends Component {
         const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
 
         if (this.gameMessage !== messages.welcome){
+            this.gameMessage = messages.welcome;
             updateGameTotal(games);
             updateGameStatus(gameStatus);
             setTimeout(function(){
                 console.log("Welcome message should happen here.");
-                this.gameMessage = messages.welcome;
                 updateMessage(this.gameMessage);
             }, 2000);
         }
@@ -78,18 +83,28 @@ class Modal extends Component {
 
     componentWillReceiveProps(nextProps){
 
-        const {dragonHP, playerHP, modalState, updateMessage} = this.props;
+        const {dragonHP, playerHP, modalState, updateMessage, gp} = this.props;
+        const nextDragonHP = nextProps.dragonHP;
+        const nextPlayerHP = nextProps.playerHP;
+        const nextGP = nextProps.gp;
 
         if (dragonHP > 0 && playerHP > 0){
-            const {dragonHP, playerHP, gp} = nextProps;
-            this.checkForWin(dragonHP);
-            this.checkForLoss(playerHP);
-            this.checkForGameEnd(dragonHP, gp);
+            console.log("first check.");
+
+            this.checkForWin(nextDragonHP);
+            this.checkForLoss(nextPlayerHP);
+
         } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
                 updateMessage(this.gameMessage);
             }, 2000);
+        }
+
+        if ((gp < 1230 && nextGP === 1230) && dragonHP < 1) {
+            console.log("gp: ", gp);
+            console.log("nextGP: ", nextGP);
+            this.checkForGameEnd(nextDragonHP, nextGP);
         }
 
         if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
