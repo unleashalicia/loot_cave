@@ -38,3 +38,7 @@ button:hover {
     height: 90%;
     width: 50%;
 }
+
+.hidden {
+    display: none;
+}

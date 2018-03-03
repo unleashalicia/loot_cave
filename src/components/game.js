@@ -2,8 +2,9 @@ import '../assets/css/game.css';
 
 import React, {Component} from 'react';
 import cardData from '../helpers/card_data';
+import messages from '../helpers/modal_messages';
 import Card from './card';
-import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal} from "../actions/index";
+import {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal, updateMessage} from "../actions/index";
 import {connect} from 'react-redux';
 
 class Game extends Component{
@@ -11,13 +12,15 @@ class Game extends Component{
         super(props);
 
         this.blockClick = true;
+        this.gameMessage = messages.welcome;
     }
 
     componentDidMount(){
 
-        const {toggleModal, modalState} = this.props;
+        const {toggleModal, modalState, updateMessage} = this.props;
 
         this.createNewDeck();
+        updateMessage(this.gameMessage);
         setTimeout(
             function(){
             toggleModal(modalState);
@@ -27,12 +30,17 @@ class Game extends Component{
 
     componentWillReceiveProps(NextProps){
 
-        const {newGame, modalState} = this.props;
+        const {newGame, modalState, toggleModal} = this.props;
 
         if(NextProps.newGame){
             this.createNewDeck();
             this.props.updateGameStatus(newGame);
             this.blockClick = true;
+            setTimeout(
+                function(){
+                    toggleModal(modalState);
+                }, 5000
+            );
         }
 
         if (NextProps.modalState === false && modalState === true) {
@@ -117,7 +125,6 @@ class Game extends Component{
     }
 
     render(){
-        console.log(this.blockClick);
 
         const Deck = this.props.playDeck.map((item,index)=>{
             return <Card flip={()=>{this.handleCardClick(index)}} frontImage={item.image} altImage={item.alt} cardType={item.type} isFlipped={item.flipped} isMatched={item.matched} key={index}/>
@@ -147,4 +154,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal})(Game);
+export default connect(mapStateToProps, {doubleDeck, shuffleArray, setFirstIndex, flipCard, addGold, findArmor, findWeapon, fillInventory, stabDragon, takeDamage, fadeMatch, addAttempt, addMatch, updateGameStatus, toggleModal, updateMessage})(Game);

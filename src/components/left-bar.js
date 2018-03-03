@@ -9,7 +9,6 @@ class LeftBar extends Component{
 
     render(){
 
-
         let {gp, hp, armoury, dragonHP} = this.props;
 
         return (

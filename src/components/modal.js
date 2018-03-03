@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleModal, addGold, updateGameTotal, updateGameStatus} from "../actions";
+import {toggleModal, addGold, updateGameTotal, updateGameStatus, updateMessage} from "../actions";
 import messages from '../helpers/modal_messages';
 import '../assets/css/buttons.css';
 import '../assets/css/modal.css';
@@ -15,10 +15,15 @@ class Modal extends Component {
 
         this.gameMessage = messages.welcome;
         this.handleResetClick = this.handleResetClick.bind(this);
+        this.handleLosingModalClick = this.handleLosingModalClick.bind(this);
     }
 
     checkForWin(dragon_hp){
-        const {toggleModal, modalState, addGold, gp} = this.props;
+        const {toggleModal, modalState, addGold, gp, updateMessage} = this.props;
+
+        if (this.gameMessage === messages.win && gp < 1230) {
+            return;
+        }
 
         if (dragon_hp < 1) {
             setTimeout(function(){
@@ -27,58 +32,102 @@ class Modal extends Component {
 
             this.gameMessage = messages.win;
             addGold(gp, 1000);
+            updateMessage(this.gameMessage);
+        }
+    }
+
+    checkForGameEnd(dragonHP, gp){
+        console.log("made it to function");
+        const {toggleModal, modalState, updateMessage} = this.props;
+
+        if (dragonHP < 1 && gp === 1230) {
+            setTimeout(function(){
+                toggleModal(modalState)
+            }, 1000);
+            this.gameMessage = messages.treasure;
+            updateMessage(this.gameMessage);
         }
     }
 
     checkForLoss(player_hp){
-        const {toggleModal, modalState} = this.props;
+        const {toggleModal, modalState, updateMessage} = this.props;
 
         if (player_hp < 1){
             setTimeout(function(){
                 toggleModal(modalState)
             }, 1000);
             this.gameMessage = messages.lose;
+            updateMessage(this.gameMessage);
         }
     }
 
     handleResetClick(){
-        const {games, gameStatus, updateGameTotal, updateGameStatus} = this.props;
+        const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
 
         if (this.gameMessage !== messages.welcome){
+            this.gameMessage = messages.welcome;
             updateGameTotal(games);
             updateGameStatus(gameStatus);
+            setTimeout(function(){
+                console.log("Welcome message should happen here.");
+                updateMessage(this.gameMessage);
+            }, 2000);
         }
+    }
+
+    handleLosingModalClick(){
+        const {toggleModal, modalState} = this.props;
+        this.handleResetClick();
+        toggleModal(modalState);
     }
 
     componentWillReceiveProps(nextProps){
 
-        if (this.props.dragonHP > 0 && this.props.playerHP > 0){
-            const {dragonHP, playerHP} = nextProps;
+        const {dragonHP, playerHP, modalState, updateMessage, gp} = this.props;
+        const nextDragonHP = nextProps.dragonHP;
+        const nextPlayerHP = nextProps.playerHP;
+        const nextGP = nextProps.gp;
 
-            this.checkForWin(dragonHP);
-            this.checkForLoss(playerHP);
-        } else if (this.props.dragonHP === 3 && this.props.playerHP === 1) {
+        if (dragonHP > 0 && playerHP > 0){
+            console.log("first check.");
+
+            this.checkForWin(nextDragonHP);
+            this.checkForLoss(nextPlayerHP);
+
+        } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
                 this.gameMessage = messages.welcome;
+                updateMessage(this.gameMessage);
             }, 2000);
+        }
 
+        if ((gp < 1230 && nextGP === 1230) && dragonHP < 1) {
+            console.log("gp: ", gp);
+            console.log("nextGP: ", nextGP);
+            this.checkForGameEnd(nextDragonHP, nextGP);
+        }
+
+        if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
+            this.handleResetClick();
+            this.gameMessage = messages.welcome;
+            updateMessage(this.gameMessage);
         }
     }
 
     render() {
-
-        const {modalState, toggleModal} = this.props;
+        const {modalState, toggleModal, gp} = this.props;
 
         return (
-            <div onClick={toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
+            <div onClick={this.gameMessage === messages.lose ? this.handleLosingModalClick : toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
                 <div className={!modalState ? 'top-hidden inner-modal' : 'shown inner-modal'}>
                     <div className="close">X</div>
                     <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
                     <p>{this.gameMessage}</p>
                     <div id="modal-button-container">
+                        <button className={this.gameMessage === messages.win && gp < 1230 ? "" : "hidden"}>Find More Treasure!</button>
                         <button onClick={this.handleResetClick}>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
                     </div>
-                    <img src={logo} alt="dragon logo"/>
+                    <img className={this.gameMessage === messages.win && gp < 1230 ? "hidden" : ""} src={logo} alt="dragon logo"/>
                 </div>
             </div>
         )
@@ -96,4 +145,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {toggleModal, addGold, updateGameTotal, updateGameStatus})(Modal);
+export default connect(mapStateToProps, {toggleModal, addGold, updateGameTotal, updateGameStatus, updateMessage})(Modal);

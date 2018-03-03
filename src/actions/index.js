@@ -179,3 +179,11 @@ export function toggleMatchKey(matchKey){
         payload: toggledKey
     }
 }
+
+export function updateMessage(message){
+
+    return {
+        type: types.UPDATE_MODAL_MESSAGE,
+        payload: message
+    }
+}
