@@ -19,16 +19,16 @@ body {
 h1, h2, h3, h4 {  display: block;  font-weight: bold; }
 p {display: block;}
 
-h1 {font-size: 4.5vh;}
-h2 {font-size: 4vh;}
-h3, p {font-size: 3vh;}
+h1 {font-size: 4.5vmin;}
+h2 {font-size: 4vmin;}
+h3, p {font-size: 3vmin;}
 li {font-size: 2vmin;}
-h4 {font-size: 2vh;}
+h4 {font-size: 2vmin;}
 
 
 @media only screen and (max-width: 1024px) {
-    h1 {font-size: 3vh;}
-    h2, h3, h4, p {font-size: 2vh;}
+    h1 {font-size: 3vmin;}
+    h2, h3, h4, p {font-size: 2vmin;}
 }
 
 @media only screen and (max-width: 500px) {
