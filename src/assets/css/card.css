@@ -8,7 +8,7 @@
     -moz-transition: opacity 3s ease-out;
     -o-transition: opacity 3s ease-out;
     transition: opacity 3s ease-out;
-    cursor: pointer;
+    cursor: default;
 }
 
 
@@ -25,6 +25,7 @@
 
 .back {
     background: linear-gradient(to top left, black 45%, gray);
+    cursor: pointer;
 }
 
 .back:hover {
@@ -33,6 +34,7 @@
 
 .front {
     transition: 5s;
+    cursor: default;
 }
 
 
@@ -118,6 +120,7 @@
 
 .transparent {
     opacity: 0;
+    cursor: default;
 }
 
 .grayscale {
