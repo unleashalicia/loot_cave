@@ -78,6 +78,10 @@
     .inner-modal {
         width: 70%;
     }
+
+    .inner-modal p {
+        font-size: 2.5vh;
+    }
 }
 
 
