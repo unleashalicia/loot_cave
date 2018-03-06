@@ -29,19 +29,6 @@ class RightBar extends Component{
 
     }
 
-    // handleResetClick(){
-    //     const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
-    //
-    //     if (this.gameMessage !== messages.welcome){
-    //         this.gameMessage = messages.welcome;
-    //         updateGameTotal(games);
-    //         updateGameStatus(gameStatus);
-    //         setTimeout(function(){
-    //             updateMessage(this.gameMessage);
-    //         }, 2000);
-    //     }
-    // }
-
     handleMatchKeyClick(){
         const {matchKey, toggleMatchKey} = this.props;
 

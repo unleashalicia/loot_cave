@@ -71,12 +71,17 @@
 }
 
 @media only screen and (max-width: 1166px) {
+
+    #match-guide h1 {
+        display: none;
+    }
+
     #match-guide > div {
         width: 90%;
     }
 
     #match-guide > div li {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     #dragon-card-info {
@@ -90,22 +95,24 @@
 
 @media only screen and (max-width: 856px) {
 
-    #match-guide h1 {
-        display: none;
+    #match-guide {
+        overflow-y: scroll;
+        display: block;
     }
 
     #match-guide > div {
         width: 90%;
-        height: 20%;
-        font-size: 16px;
+        height: 100px;
+        font-size: 14px;
+        margin-bottom: 20px;
     }
 
     #match-guide > div li {
-        font-size: 8px;
+        font-size: 11px;
     }
 
-    #dragon-card-info {
-        height: 33%;
+    div#dragon-card-info {
+        height: 300px;
     }
 
     .card-figure {
@@ -123,6 +130,7 @@
 
     #match-guide {
         height: 50%;
+        display: flex;
     }
 
     #match-guide  *:not(.close):not(#close-message) {
