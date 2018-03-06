@@ -25,7 +25,6 @@
 
 .back {
     background: linear-gradient(to top left, black 45%, gray);
-    opacity: 0.5;
 }
 
 .back:hover {
