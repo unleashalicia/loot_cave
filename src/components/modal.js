@@ -89,7 +89,6 @@ class Modal extends Component {
         const nextGP = nextProps.gp;
 
         if (dragonHP > 0 && playerHP > 0){
-            console.log("first check.");
 
             this.checkForWin(nextDragonHP);
             this.checkForLoss(nextPlayerHP);
@@ -115,7 +114,9 @@ class Modal extends Component {
     }
 
     render() {
-        const {modalState, toggleModal, gp} = this.props;
+        const {modalState, toggleModal, gp, message} = this.props;
+
+        this.gameMessage = message;
 
         return (
             <div onClick={this.gameMessage === messages.lose ? this.handleLosingModalClick : toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
@@ -141,7 +142,8 @@ function mapStateToProps(state){
         playerHP: state.game.playerHP,
         gp: state.game.gold,
         games: state.game.games,
-        gameStatus: state.game.newGame
+        gameStatus: state.game.newGame,
+        message: state.game.message
     }
 }
 

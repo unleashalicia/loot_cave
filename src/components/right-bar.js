@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {updateGameTotal, updateGameStatus, toggleMatchKey} from "../actions";
+import {updateGameTotal, updateGameStatus, toggleMatchKey, updateMessage} from "../actions";
 import {connect} from 'react-redux';
+import messages from '../helpers/modal_messages';
 
 import '../assets/css/buttons.css';
 import '../assets/css/right-bar.css';
@@ -11,15 +12,21 @@ class RightBar extends Component{
     constructor(props){
         super(props);
 
+        this.gameMessage = messages.welcome;
+
         this.handleResetClick = this.handleResetClick.bind(this);
         this.handleMatchKeyClick = this.handleMatchKeyClick.bind(this);
     }
 
     handleResetClick(){
-        const {games, gameStatus, updateGameTotal, updateGameStatus} = this.props;
+        const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
 
+        this.gameMessage = messages.welcome;
+
+        updateMessage(this.gameMessage);
         updateGameTotal(games);
         updateGameStatus(gameStatus);
+
     }
 
     handleMatchKeyClick(){
@@ -65,9 +72,10 @@ function mapStateToProps(state){
         games: state.game.games,
         gameStatus: state.game.newGame,
         inventory: state.game.inventory,
-        matchKey: state.game.matchKey
+        matchKey: state.game.matchKey,
+        message: state.game.message
     }
 }
 
-export default connect(mapStateToProps, {updateGameTotal, updateGameStatus, toggleMatchKey})(RightBar);
+export default connect(mapStateToProps, {updateGameTotal, updateGameStatus, toggleMatchKey, updateMessage})(RightBar);
 
