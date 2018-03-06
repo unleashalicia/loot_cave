@@ -134,7 +134,7 @@
      background-image: url('../images/chainmail.png');
 }
 
-@media only screen and (min-width : 800px) and (max-device-width : 1024px) {
+@media only screen and (max-width : 1024px) and (min-height: 450px){
      #left-bar {
           display: none;
      }

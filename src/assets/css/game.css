@@ -47,7 +47,7 @@
 .card-container:nth-child(17) { animation-delay: 4.25s }
 .card-container:nth-child(18) { animation-delay: 4.5s }
 
-@media only screen and (min-width : 800px) and (max-device-width : 1024px) {
+@media only screen and (max-width : 1024px) and (min-height: 450px){
     #game-board {
         width: 90%;
         left: 5%;
