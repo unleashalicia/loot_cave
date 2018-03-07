@@ -1,4 +1,5 @@
 import types from '../actions/types';
+import messageObj from '../helpers/modal_messages';
 
 const DEFAULT_STATE = {
     deck: [],
@@ -15,7 +16,7 @@ const DEFAULT_STATE = {
     games: 0,
     newGame: false,
     matchKey: false,
-    message: "Welcome, Adventurer!  You have made it to the dragon cave.  For years you have heard tell of the dragon that terrorizes the village below and of the untold treasures that hide in the depths of this cave.  Be very quiet as you look for treasure here.  In this cave you can find loot, a sword, and a suit of armor.  The latter two will help you defeat the dragon.  Match any two cards, and they're yours.  Unless, of course, you see the dragon.  Mismatch two dragon cards, and he'll burn you to a crisp.  Match two, and you'll stab him before disappearing back into the shadows.  May fortune favor you on your quest!"
+    message: ''
 };
 
 export default function(state = DEFAULT_STATE, action){
@@ -55,7 +56,7 @@ export default function(state = DEFAULT_STATE, action){
         case types.TOGGLE_MATCH_KEY:
             return {...state, matchKey: action.payload};
         case types.UPDATE_MODAL_MESSAGE:
-            return {...state, message: action.payload}
+            return {...state, message: action.payload};
         default:
             return state;
     }

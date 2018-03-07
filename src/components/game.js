@@ -20,7 +20,7 @@ class Game extends Component{
         const {toggleModal, modalState, updateMessage} = this.props;
 
         this.createNewDeck();
-        updateMessage(this.gameMessage);
+        updateMessage("welcome");
         setTimeout(
             function(){
             toggleModal(modalState);
@@ -30,12 +30,13 @@ class Game extends Component{
 
     componentWillReceiveProps(NextProps){
 
-        const {newGame, modalState, toggleModal} = this.props;
+        const {newGame, modalState, toggleModal, updateMessage} = this.props;
 
         if(NextProps.newGame){
             this.createNewDeck();
             this.props.updateGameStatus(newGame);
             this.blockClick = true;
+            updateMessage("welcome");
             setTimeout(
                 function(){
                     toggleModal(modalState);

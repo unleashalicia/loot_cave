@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {toggleModal, addGold, updateGameTotal, updateGameStatus, updateMessage} from "../actions";
-import messages from '../helpers/modal_messages';
+import messagesObj from '../helpers/modal_messages';
 import '../assets/css/buttons.css';
 import '../assets/css/modal.css';
 import '../assets/images/graphpaper.jpg';
@@ -13,15 +13,18 @@ class Modal extends Component {
     constructor(props){
         super(props);
 
-        this.gameMessage = messages.welcome;
         this.handleResetClick = this.handleResetClick.bind(this);
         this.handleLosingModalClick = this.handleLosingModalClick.bind(this);
     }
 
-    checkForWin(dragon_hp){
-        const {toggleModal, modalState, addGold, gp, updateMessage} = this.props;
+    componentDidMount(){
+        this.props.updateMessage("welcome");
+    }
 
-        if (this.gameMessage === messages.win && gp < 1230) {
+    checkForWin(dragon_hp){
+        const {toggleModal, modalState, addGold, gp, updateMessage, message} = this.props;
+
+        if (message === messagesObj.win && gp < 1230) {
             return;
         }
 
@@ -30,9 +33,8 @@ class Modal extends Component {
                 toggleModal(modalState)
             }, 1000);
 
-            this.gameMessage = messages.win;
             addGold(gp, 1000);
-            updateMessage(this.gameMessage);
+            updateMessage("win");
         }
     }
 
@@ -44,8 +46,8 @@ class Modal extends Component {
             setTimeout(function(){
                 toggleModal(modalState)
             }, 1000);
-            this.gameMessage = messages.treasure;
-            updateMessage(this.gameMessage);
+
+            updateMessage("treasure");
         }
     }
 
@@ -56,34 +58,37 @@ class Modal extends Component {
             setTimeout(function(){
                 toggleModal(modalState)
             }, 1000);
-            this.gameMessage = messages.lose;
-            updateMessage(this.gameMessage);
+
+            updateMessage("lose");
         }
     }
 
     handleResetClick(){
-        const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage} = this.props;
+        const {games, gameStatus, updateGameTotal, updateGameStatus, updateMessage, message} = this.props;
 
-        if (this.gameMessage !== messages.welcome){
-            this.gameMessage = messages.welcome;
+        if (message !== messagesObj.welcome){
+
             updateGameTotal(games);
             updateGameStatus(gameStatus);
             setTimeout(function(){
-                console.log("Welcome message should happen here.");
-                updateMessage(this.gameMessage);
+                updateMessage("welcome");
             }, 2000);
         }
     }
 
     handleLosingModalClick(){
-        const {toggleModal, modalState} = this.props;
+        const {toggleModal, modalState, updateMessage} = this.props;
         this.handleResetClick();
         toggleModal(modalState);
+        setTimeout(function(){
+            updateMessage("welcome")
+        }, 2000);
+
     }
 
     componentWillReceiveProps(nextProps){
 
-        const {dragonHP, playerHP, modalState, updateMessage, gp} = this.props;
+        const {dragonHP, playerHP, modalState, updateMessage, message, gp} = this.props;
         const nextDragonHP = nextProps.dragonHP;
         const nextPlayerHP = nextProps.playerHP;
         const nextGP = nextProps.gp;
@@ -95,40 +100,36 @@ class Modal extends Component {
 
         } else if (dragonHP === 3 && playerHP === 1) {
             setTimeout(function(){
-                this.gameMessage = messages.welcome;
-                updateMessage(this.gameMessage);
+
+                updateMessage("welcome");
             }, 2000);
         }
 
         if ((gp < 1230 && nextGP === 1230) && dragonHP < 1) {
-            console.log("gp: ", gp);
-            console.log("nextGP: ", nextGP);
             this.checkForGameEnd(nextDragonHP, nextGP);
         }
 
-        if (this.gameMessage === messages.lose && modalState === true && nextProps.modalState === false) {
+        if (message === messagesObj.lose && modalState === true && nextProps.modalState === false) {
             this.handleResetClick();
-            this.gameMessage = messages.welcome;
-            updateMessage(this.gameMessage);
+
+            updateMessage("welcome");
         }
     }
 
     render() {
         const {modalState, toggleModal, gp, message} = this.props;
 
-        this.gameMessage = message;
-
         return (
-            <div onClick={this.gameMessage === messages.lose ? this.handleLosingModalClick : toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
+            <div onClick={message === messagesObj.lose ? this.handleLosingModalClick : toggleModal} className={!modalState ? 'hidden outer-modal' : 'outer-modal'}>
                 <div className={!modalState ? 'top-hidden inner-modal' : 'shown inner-modal'}>
                     <div className="close">X</div>
-                    <h1>{this.gameMessage === messages.welcome ? "LOOT CAVE" : this.gameMessage === messages.lose ? "ALAS" : "HUZZAH!"}</h1>
-                    <p>{this.gameMessage}</p>
+                    <h1>{message === messagesObj.welcome ? "LOOT CAVE" : message === messagesObj.lose ? "ALAS" : "HUZZAH!"}</h1>
+                    <p>{message}</p>
                     <div id="modal-button-container">
-                        <button className={this.gameMessage === messages.win && gp < 1230 ? "" : "hidden"}>Find More Treasure!</button>
-                        <button onClick={this.handleResetClick}>{this.gameMessage === messages.welcome ? "Start Game" : "Play Again"}</button>
+                        <button className={message === messagesObj.win && gp < 1230 ? "" : "hidden"}>Find More Treasure!</button>
+                        <button onClick={this.handleResetClick}>{message === messagesObj.welcome ? "Start Game" : "Play Again"}</button>
                     </div>
-                    <img className={this.gameMessage === messages.win && gp < 1230 ? "hidden" : ""} src={logo} alt="dragon logo"/>
+                    <img className={message === messagesObj.win && gp < 1230 ? "hidden" : ""} src={logo} alt="dragon logo"/>
                 </div>
             </div>
         )
