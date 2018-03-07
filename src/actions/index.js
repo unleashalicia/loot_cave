@@ -1,4 +1,5 @@
 import types from './types';
+import gameMessages from '../helpers/modal_messages';
 
 export function doubleDeck(arr){
 
@@ -181,9 +182,13 @@ export function toggleMatchKey(matchKey){
 }
 
 export function updateMessage(message){
+    let newMessage = gameMessages[message];
+    // console.log("new Message in actions: ", newMessage);
+    console.log("message sent to function in actions: ", message);
+    // console.log("game Message Obj in function: ", gameMessages);
 
     return {
         type: types.UPDATE_MODAL_MESSAGE,
-        payload: message
+        payload: newMessage
     }
 }
