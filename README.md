@@ -19,4 +19,4 @@
 > - CSS with Flexbox
 > - Pixlr photo editing
 
-![Screenshot of Loot Cave](./dist/loot_cave_screenshot%20copy.png)
+![Screenshot of Loot Cave](./dist/Screen%20Shot%202018-03-07%20at%201.20.27%20PM.png)
